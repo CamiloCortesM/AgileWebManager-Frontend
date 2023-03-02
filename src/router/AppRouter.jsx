@@ -3,7 +3,7 @@ import { LoginPage } from "../auth/pages/LoginPage";
 import { TablePage } from "../table/pages/TablePage";
 
 export const AppRouter = () => {
-  // const state = "not-authenticated" 
+  const state = "not-authenticated" 
   return (
     <Routes>
       {state === "not-authenticated" ? (
