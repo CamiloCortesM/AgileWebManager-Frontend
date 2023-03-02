@@ -10,12 +10,13 @@ export const LoginPage = () => {
         </p>
       </div>
       <div className="login__body">
-        <div className="login__body__email">
-          <input placeholder="email" className="login__input__email input" />
+        <div className="login__body__email login__input">
+          <input placeholder="Email" type="email" className="login__input__email input" />
         </div>
-        <div className="login__body__password">
+        <div className="login__body__password login__input">
           <input
-            placeholder="password"
+            type="password"
+            placeholder="Password"
             className="login__input__password input"
           />
         </div>
@@ -23,6 +24,10 @@ export const LoginPage = () => {
       <div className="login__footer">
         <button className="login__footer__bottom">Login</button>
       </div>
+      <figure className="background__icons">
+        <img className="icon__team" src="/public/icons/undraw_work_chat_re_qes4.svg" alt="imagen2" />
+        <img className="icon__cat" src="/public/icons/undraw_cat_q46h.svg" alt="imagen" />
+      </figure>
     </div>
   );
 };
