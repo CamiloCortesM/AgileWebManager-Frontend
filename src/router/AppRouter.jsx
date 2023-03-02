@@ -1,4 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { LoginPage } from "../auth/pages/LoginPage";
+import { TablePage } from "../table/pages/TablePage";
 
 export const AppRouter = () => {
   return (
