@@ -1,7 +1,9 @@
+import { AppRouter } from "./router/AppRouter";
+
 export const AgileWebPro = () => {
   return (
     <div>
-      <h1>AgileWebPro</h1>
+      <AppRouter />
     </div>
   );
 };
