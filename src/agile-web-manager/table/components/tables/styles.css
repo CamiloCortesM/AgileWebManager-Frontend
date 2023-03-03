@@ -1,0 +1,44 @@
+.create-table {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+
+.create-table__item {
+    min-width: 150px;
+    max-width: 200px;
+    flex: 1 1 20px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 3px #808080;
+    cursor: pointer;
+    color: var(--white);
+    position: relative;
+}
+
+.create-table__title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+}
+
+.create-table__color {
+    background-color: var(--primary-color);
+}
+
+.create-table__delete{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    height: 25px;
+    background-color: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
