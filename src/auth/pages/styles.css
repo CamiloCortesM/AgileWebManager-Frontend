@@ -42,7 +42,7 @@
   margin: 0 auto;
   align-items: center;
   justify-content: space-evenly;
-  height: 150px;
+  height: 220px;
   border-top: 1px solid var(--secondary-color);
 }
 
@@ -84,8 +84,6 @@ input {
   width: 400px;
   margin: 0 auto;
   align-items: center;
-  justify-content: space-evenly;
-  height: 50px;
 }
 
 .botton{
