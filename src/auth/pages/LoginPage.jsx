@@ -1,6 +1,19 @@
-import "../styles.css";
+import { useForm } from "../../hooks/useForm";
+import "./styles.css";
+
+const loginformfield = {
+  email: "",
+  password: "",
+};
 
 export const LoginPage = () => {
+  const { onInputChange, email, password } = useForm(loginformfield);
+
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  };
+
   return (
     <div className="Login">
       <div className="login__header">
@@ -13,11 +26,14 @@ export const LoginPage = () => {
         <p></p>
       </div>
       <div className="login__body">
-        <form className="login__body__form">
+        <form className="login__body__form" onSubmit={loginSubmit}>
           <div className="login__body__email login__input">
             <input
               placeholder="Email"
               type="email"
+              name="email"
+              onChange={onInputChange}
+              value={email}
               className="login__input__email input"
             />
             <img
@@ -30,6 +46,9 @@ export const LoginPage = () => {
             <input
               type="password"
               placeholder="Password"
+              name="password"
+              onChange={onInputChange}
+              value={password}
               className="login__input__password input"
             />
             <img
@@ -38,10 +57,12 @@ export const LoginPage = () => {
               alt="lock-icon"
             />
           </div>
+          <div className="login__footer">
+            <button type="submit" className="login__footer__botton botton">
+              Login
+            </button>
+          </div>
         </form>
-      </div>
-      <div className="login__footer">
-        <button className="login__footer__botton botton">Login</button>
       </div>
       <figure className="background__icons">
         <img
