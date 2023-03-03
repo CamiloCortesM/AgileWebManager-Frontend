@@ -37,7 +37,7 @@ export const AuthPage = () => {
         </div>
         <div className="Auth__footer">
           <button type="submit" className="auth__footer__botton botton">
-            Enviar
+            Send
           </button>
         </div>
       </div>
