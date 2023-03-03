@@ -1,4 +1,4 @@
-export const ChangePassword = () => {
+export const ChangePasswordPage = () => {
   return (
     <div className="change_password">
       <div className="change_password__header">
