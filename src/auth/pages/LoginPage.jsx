@@ -13,25 +13,47 @@ export const LoginPage = () => {
         <p></p>
       </div>
       <div className="login__body">
-        <div className="login__body__email login__input">
-          <input placeholder="Email" type="email" className="login__input__email input" />
-          <img className="login_body__icon--Email login_body__icon" src="/public/icons/user-svgrepo-com.svg" alt="imagen2" />
-        </div>
-        <div className="login__body__password login__input">
-          <input
-            type="password"
-            placeholder="Password"
-            className="login__input__password input"
-          />
-          <img className="login_body__icon--Email login_body__icon" src="/public/icons/lock-off-svgrepo-com.svg" alt="imagen2" />
-        </div>
+        <form className="login__body__form">
+          <div className="login__body__email login__input">
+            <input
+              placeholder="Email"
+              type="email"
+              className="login__input__email input"
+            />
+            <img
+              className="login_body__icon--Email login_body__icon"
+              src="/public/icons/user-svgrepo-com.svg"
+              alt="user-icon"
+            />
+          </div>
+          <div className="login__body__password login__input">
+            <input
+              type="password"
+              placeholder="Password"
+              className="login__input__password input"
+            />
+            <img
+              className="login_body__icon--Email login_body__icon"
+              src="/public/icons/lock-off-svgrepo-com.svg"
+              alt="lock-icon"
+            />
+          </div>
+        </form>
       </div>
       <div className="login__footer">
-        <button className="login__footer__bottom">Login</button>
+        <button className="login__footer__botton botton">Login</button>
       </div>
       <figure className="background__icons">
-        <img className="icon__team" src="/public/icons/undraw_work_chat_re_qes4.svg" alt="imagen2" />
-        <img className="icon__cat" src="/public/icons/undraw_cat_q46h.svg" alt="imagen" />
+        <img
+          className="icon__team"
+          src="/public/icons/undraw_work_chat_re_qes4.svg"
+          alt="work"
+        />
+        <img
+          className="icon__cat"
+          src="/public/icons/undraw_cat_q46h.svg"
+          alt="cat"
+        />
       </figure>
     </div>
   );
