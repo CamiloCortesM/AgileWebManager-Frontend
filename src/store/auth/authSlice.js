@@ -37,4 +37,4 @@ export const authSlice = createSlice({
 
 
 
-export const {} = authSlice.actions
+export const {onChecking,onCreate,onLogin,onLogout,onVerify} = authSlice.actions
