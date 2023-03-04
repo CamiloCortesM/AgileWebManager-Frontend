@@ -6,7 +6,6 @@ export const NumberPage = () => {
 
   const { startSendNumber } = useAuthStore();
 
-
   const onInputChange = ({ target }) => {
     const value = target.value;
     if (value.length > 10) return;
@@ -18,7 +17,7 @@ export const NumberPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const numberPhone = "+57" + number;
-    startSendNumber({numberPhone})
+    startSendNumber({ phone: numberPhone });
   };
 
   return (
@@ -63,7 +62,9 @@ export const NumberPage = () => {
               />
             </div>
             <div className="number__footer">
-              <button className="number__footer__botton botton" type="submit">Send</button>
+              <button className="number__footer__botton botton" type="submit">
+                Send
+              </button>
             </div>
           </form>
         </div>

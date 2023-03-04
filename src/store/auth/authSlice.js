@@ -14,7 +14,7 @@ export const authSlice = createSlice({
       state.errorMessage = undefined;
     },
     onPhone: (state, { payload }) => {
-      state.user = { ...user, phone: payload.phone };
+      state.user = { ...state.user, phone: payload.phone };
       state.errorMessage = undefined;
     },
     onLogin: (state, { payload }) => {

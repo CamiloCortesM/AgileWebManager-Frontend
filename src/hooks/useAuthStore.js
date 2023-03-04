@@ -19,7 +19,7 @@ export const useAuthStore = () => {
     try {
       const { data } = await agileWebApi.post("/auth", { email, password });
       if (data.phone) {
-        const { response } = await agileWebApi.post("/auth/send", {
+        await agileWebApi.post("/auth/send", {
           phone: data.phone,
         });
       }
@@ -40,8 +40,11 @@ export const useAuthStore = () => {
 
   const startSendNumber = async ({ phone }) => {
     try {
-      await agileWebApi.post("/auth/send", { phone });
-      await agileWebApi.put(`auth/${user.uid}`, {
+      if (!user?.uid) {
+        throw new Error("User not authenticated");
+      }
+        await agileWebApi.post("/auth/send", { phone });
+      await agileWebApi.put(`auth/${user?.uid}`, {
         phone,
       });
       dispatch(
