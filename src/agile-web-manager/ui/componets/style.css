@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
-}
-
 .navbar {
     height: 50px;
     background-color: var(--primary-color);
@@ -26,7 +20,7 @@
 }
 
 .navbar__title::before {
-    content: url('public/cat.svg');
+    content: url('public/icons/cat.svg');
     margin: 0 10px;
     vertical-align: middle;
 
@@ -141,12 +135,12 @@
 }
 
 .navbar__menu__confi::after {
-    content: url('public/cog.svg');
+    content: url('public/icons/cog.svg');
     margin-top: 5px;
 }
 
 .navbar__menu__close::after {
-    content: url('public/exit.svg');
+    content: url('public/icons/exit.svg');
     margin-top: 5px;
 }
 

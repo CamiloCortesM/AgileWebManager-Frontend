@@ -1,0 +1,11 @@
+.add-tarjet {
+    margin: 10px;
+}
+
+.add-tarjet__area {
+    width: 100%;
+    height: 30px;
+    background-color: var(--white);
+    padding: 0 5px;
+    box-shadow: 0 0 5px var(--primary-color);
+}

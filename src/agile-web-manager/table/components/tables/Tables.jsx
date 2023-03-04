@@ -18,7 +18,7 @@ export const Tables = ({ toggleModal, toggleModalDelete }) => {
                 className="create-table__title create-table__item"
             >
                 <figure>
-                    <img src="public/plus.svg" alt="plus.svg" />
+                    <img src="public/icons/plus.svg" alt="plus.svg" />
                 </figure>
                 Create Table
             </div>
@@ -27,7 +27,7 @@ export const Tables = ({ toggleModal, toggleModalDelete }) => {
                 <span onClick={handleDelete}>
                     <img
                         className="create-table__delete"
-                        src="public/x.svg"
+                        src="public/icons/x.svg"
                     ></img>
                 </span>
                 Hola Mundo!
@@ -37,7 +37,7 @@ export const Tables = ({ toggleModal, toggleModalDelete }) => {
                 <span onClick={handleDelete}>
                     <img
                         className="create-table__delete"
-                        src="public/x.svg"
+                        src="public/icons/x.svg"
                     ></img>
                 </span>
                 Sistemas Operativos
@@ -47,7 +47,7 @@ export const Tables = ({ toggleModal, toggleModalDelete }) => {
                 <span onClick={handleDelete}>
                     <img
                         className="create-table__delete"
-                        src="public/x.svg"
+                        src="public/icons/x.svg"
                     ></img>
                 </span>
                 Software I

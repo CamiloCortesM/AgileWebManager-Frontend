@@ -1,0 +1,26 @@
+.delete-todo__button__trash {
+    width: 20px;
+    vertical-align: middle;
+    margin: 0 10px;
+    padding: 2px;
+}
+
+.delete-todo__button__trash:hover {
+    filter: drop-shadow(0px 0px 2px var(--primary-color));
+}
+
+
+.delete-todo__cancel,
+.delete-todo__check {
+    width: 25px;
+    vertical-align: middle;
+    padding: 2px;
+}
+
+.delete-todo__check:hover {
+    filter: drop-shadow(0px 0px 2px var(--secondary-color));
+}
+
+.delete-todo__cancel:hover {
+    filter: drop-shadow(0px 0px 2px var(--red));
+}

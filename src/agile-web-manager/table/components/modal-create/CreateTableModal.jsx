@@ -17,7 +17,7 @@ export const CreateTableModal = ({ toggleModal }) => {
           <span onClick={handleCloseModal}>
             <img
               className="create-table-modal__title__x"
-              src="public/x.svg" alt="x.svg"
+              src="public/icons/x.svg" alt="x.svg"
             />
           </span>
           <h2 className="create-table-modal__title__h2">Create Table</h2>
