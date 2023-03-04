@@ -142,12 +142,19 @@ input {
   text-align: center;
 }
 
-.auth__footer{
-  height: 20%;
+.auth__body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35%;
 }
 
-.auth__body{
-  height: 20%;
+.auth__error{
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--red);
+  height: 23px;
 }
 
 .auth__image{
@@ -187,15 +194,18 @@ input {
 }
 
 .auth__body__form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
 .auth-code-input {
   display: flex;
   justify-content: center;
-  height: 100%;
   align-items: center;
-  
+  height: 30%;
 }
 
 .auth-code-input input[type="text"] {
