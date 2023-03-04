@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthenticateRoutes } from "../agile-web-manager";
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { useAuthStore } from "../hooks/useAuthStore";
 
 export const AppRouter = () => {
-  const state = "not-authenticated";
+  const { state } = useAuthStore();
 
   if (state === "checking") {
     return <h3>Cargando...</h3>;
