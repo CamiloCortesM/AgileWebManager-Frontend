@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export const NumberPage = () => {
   const [number, setNumber] = useState("");
+
+  const { startSendNumber } = useAuthStore();
+
 
   const onInputChange = ({ target }) => {
     const value = target.value;
@@ -14,7 +18,7 @@ export const NumberPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const numberPhone = "+57" + number;
-    console.log(numberPhone);
+    startSendNumber({numberPhone})
   };
 
   return (
