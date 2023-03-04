@@ -13,7 +13,7 @@ export const DeleteTableModal = ({ toggleModalDelete }) => {
                 <span onClick={handleDelete}>
                     <img
                         className="delete-table-modal__delete"
-                        src="public/x.svg"
+                        src="public/icons/x.svg"
                     ></img>
                 </span>
                 <p className="delete-table-modal__p">Are you sure you want to delete your table?</p>
