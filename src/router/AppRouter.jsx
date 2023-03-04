@@ -1,10 +1,15 @@
+import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthenticateRoutes } from "../agile-web-manager";
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
 import { useAuthStore } from "../hooks/useAuthStore";
 
 export const AppRouter = () => {
-  const { state } = useAuthStore();
+  const { state, checkAuthToken } = useAuthStore();
+
+  useEffect(() => {
+    checkAuthToken();
+  }, []);
 
   if (state === "checking") {
     return <h3>Cargando...</h3>;
