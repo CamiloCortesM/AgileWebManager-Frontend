@@ -10,7 +10,11 @@ export const authSlice = createSlice({
   reducers: {
     onChecking: (state) => {
       state.state = "checking";
-      state.user = {}; 
+      state.user = {};
+      state.errorMessage = undefined;
+    },
+    onPhone: (state, { payload }) => {
+      state.user = { ...user, phone: payload.phone };
       state.errorMessage = undefined;
     },
     onLogin: (state, { payload }) => {
@@ -24,7 +28,6 @@ export const authSlice = createSlice({
     },
     onVerify: (state, { payload }) => {
       state.state = "authenticated";
-      state.user = payload; 
       state.errorMessage = undefined;
     },
     onLogout: (state, { payload }) => {
@@ -45,4 +48,5 @@ export const {
   onLogout,
   onVerify,
   clearErrorMessage,
+  onPhone,
 } = authSlice.actions;

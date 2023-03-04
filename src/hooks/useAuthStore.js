@@ -1,6 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import agileWebApi from "../api/agileWebApi";
-import { clearErrorMessage, onChecking, onLogin, onLogout } from "../store";
+import {
+  clearErrorMessage,
+  onChecking,
+  onCreate,
+  onLogin,
+  onLogout,
+  onPhone,
+  onVerify,
+} from "../store";
 
 export const useAuthStore = () => {
   const { state, user, errorMessage } = useSelector((state) => state.auth);
@@ -10,6 +18,11 @@ export const useAuthStore = () => {
     // dispatch(onChecking());
     try {
       const { data } = await agileWebApi.post("/auth", { email, password });
+      if (data.phone) {
+        const { response } = await agileWebApi.post("/auth/send", {
+          phone: data.phone,
+        });
+      }
       dispatch(
         onLogin({
           name: data.name,
@@ -25,6 +38,38 @@ export const useAuthStore = () => {
     }
   };
 
+  const startSendNumber = async ({ phone }) => {
+    try {
+      await agileWebApi.post("/auth/send", { phone });
+      await agileWebApi.put(`auth/${user.uid}`, {
+        phone,
+      });
+      dispatch(
+        onPhone({
+          phone,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const startAuthenticationNumber = async ({ code }) => {
+    try {
+      const { data } = await agileWebApi.post("auth/verify", {
+        phone: user.phone,
+        code,
+      });
+      if (data.ok && user.status === "new") {
+        dispatch(onCreate());
+      } else if (data.ok) {
+        dispatch(onVerify());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     //* Properties
     state,
@@ -33,5 +78,7 @@ export const useAuthStore = () => {
 
     //* Methods
     startLogin,
+    startSendNumber,
+    startAuthenticationNumber,
   };
 };
