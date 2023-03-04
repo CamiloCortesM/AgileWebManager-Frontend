@@ -1,20 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthenticateRoutes } from "../agile-web-manager";
-import { LoginPage } from "../auth/pages/LoginPage";
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
 
 export const AppRouter = () => {
-  const state = "authenticated" 
+  const state = "not-authenticated";
   return (
     <Routes>
-      {state === "not-authenticated" ? (
-        <>
-          <Route path="/auth/*" element={<LoginPage />} />
-          <Route path="/*" element={<Navigate to="auth/login" />} />
-        </>
-      ) : (
+      {state === "authenticated" ? (
         <>
           <Route path="/*" element={<AuthenticateRoutes />} />
           <Route path="/*" element={<Navigate to="/" />} />
+        </>
+      ) : (
+        <>
+          <Route path="/auth/*" element={<AuthRoutes />} />
+          <Route path="/*" element={<Navigate to="auth/login" />} />
         </>
       )}
     </Routes>
