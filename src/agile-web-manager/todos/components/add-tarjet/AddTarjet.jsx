@@ -6,7 +6,7 @@ export const AddTarjet = () => {
         <div className="add-tarjet">
             <input
                 className="add-tarjet__area"
-                placeholder="Enter a title for your tarjet"
+                placeholder="Enter a title for your card"
                 required
             />
         </div>
