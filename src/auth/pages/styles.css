@@ -1,4 +1,5 @@
-.Login,.change_password {
+.Login,
+.change_password {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,8 @@
   align-items: center;
 }
 
-.login__header,.change_password_header {
+.login__header,
+.change_password_header {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,37 +18,46 @@
   margin: 0px 10px 20px;
 }
 
-.login__errors,.change_password__errors{
-    height: 20px;
-    margin: 10px;
-    font-size: .8rem;
-    font-weight: 300;
-    color: var(--red);
+.login__errors,
+.change_password__errors {
+  text-align: center;
+  height: 20px;
+  width: 30%;
+  margin: 10px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--red);
 }
 
-.login__header__title,.change_password_header__title {
+.login__header__title,
+.change_password_header__title {
   font-size: 2rem;
   margin-bottom: 10px;
   color: var(--primary-color);
 }
 
-.login__header__description,.change_password__header__description {
+.login__header__description,
+.change_password__header__description {
   font-size: 0.8rem;
+  margin: 10px 0;
+  width: 50%;
   color: gray;
 }
 
-.login__body,.change_password__body {
+.login__body,
+.change_password__body {
   display: flex;
   flex-direction: column;
   width: 400px;
   margin: 0 auto;
   align-items: center;
   justify-content: space-evenly;
-  height: 150px;
+  height: 220px;
   border-top: 1px solid var(--secondary-color);
 }
 
-.login__input,.change_password__input {
+.login__input,
+.change_password__input {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -58,15 +69,18 @@
   margin-bottom: 12px;
 }
 
-.login__body__form, .change_password__form{
+.login__body__form,
+.change_password__form {
   width: 100%;
 }
 
-.login_body__icon, .change_password__icon{
+.login_body__icon,
+.change_password__icon {
   width: 23px;
 }
 
-.login__input:hover ,.change_password__input:hover{
+.login__input:hover,
+.change_password__input:hover {
   transition: 0.5s;
   box-shadow: 0px 0px 1px 1px var(--secondary-color);
 }
@@ -78,17 +92,16 @@ input {
   outline: none;
 }
 
-.login__footer, .change_password__footer {
+.login__footer,
+.change_password__footer {
   display: flex;
   flex-direction: column;
   width: 400px;
   margin: 0 auto;
   align-items: center;
-  justify-content: space-evenly;
-  height: 50px;
 }
 
-.botton{
+.botton {
   border-radius: 30px;
   margin-top: 30px;
   padding: 14px 60px;
@@ -98,9 +111,9 @@ input {
   cursor: pointer;
 }
 
-.login__footer__botton:hover, .change_password__footer__botton:hover {
+.login__footer__botton:hover,
+.change_password__footer__botton:hover {
   background-color: #fc5184dd;
-  
 }
 
 .icon__team {
@@ -118,7 +131,7 @@ input {
 
 /* AuthPage */
 
-.container__auth{
+.container__auth {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -128,7 +141,7 @@ input {
   z-index: 1;
 }
 
-.auth{
+.auth {
   width: 500px;
   height: 500px;
   margin: 0 auto;
@@ -138,47 +151,53 @@ input {
   flex-direction: column;
 }
 
-.auth__header{
+.auth__header {
   width: 100%;
   height: 40%;
   text-align: center;
 }
 
-.auth__footer{
-  height: 20%;
+.auth__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35%;
 }
 
-.auth__body{
-  height: 20%;
+.auth__error {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--red);
+  height: 23px;
 }
 
-.auth__image{
+.auth__image {
   height: 55%;
   display: flex;
   justify-content: center;
 }
-.auth__image__lock{
+.auth__image__lock {
   height: 100%;
 }
 
-.auth__header__title{
+.auth__header__title {
   margin: 15px;
   font-weight: 500;
   font-size: 1.4rem;
   color: var(--primary-color);
 }
 
-.auth__header__description{
+.auth__header__description {
   font-size: 1rem;
   font-weight: 300;
 }
 
-.auth__footer__botton{
+.auth__footer__botton {
   background-color: var(--red);
 }
 
-
-.auth__footer__botton:hover{
+.auth__footer__botton:hover {
   background-color: #fc5184dd;
 }
 
@@ -188,44 +207,45 @@ input {
   font-weight: 600;
 }
 
-.auth__body__form{
+.auth__body__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
 .auth-code-input {
   display: flex;
   justify-content: center;
-  height: 100%;
   align-items: center;
-  
+  height: 30%;
 }
 
 .auth-code-input input[type="text"] {
-  width: 45px; 
-  height: 45px; 
-  text-align: center; 
+  width: 45px;
+  height: 45px;
+  text-align: center;
   font-size: 20px;
   margin-right: 5px;
   border: 1px solid #ccc;
-  border-radius: 5px; 
-  outline: none; 
+  border-radius: 5px;
+  outline: none;
 }
 
 .auth-code-input input[type="text"]:focus {
-  border-color: var(--red); 
+  border-color: var(--red);
 }
 
-.auth__wave{
+.auth__wave {
   position: absolute;
   top: 0;
   z-index: -1;
 }
 
-
 /* NumberPage */
 
-
-.container__number{
+.container__number {
   position: relative;
   background-color: var(--red);
   width: 100%;
@@ -236,7 +256,7 @@ input {
   z-index: 1;
 }
 
-.number{
+.number {
   width: 500px;
   height: 500px;
   margin: 0 auto;
@@ -246,7 +266,7 @@ input {
   flex-direction: column;
 }
 
-.number__header{
+.number__header {
   width: 100%;
   height: 70%;
   display: flex;
@@ -255,50 +275,51 @@ input {
   align-items: center;
 }
 
-.number__header__image{
+.number__header__image {
   display: flex;
   align-items: center;
-  background-color: var( --white);
+  background-color: var(--white);
   border-radius: 50%;
   box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.076),
-  -5px 6px 5px 2px rgba(0, 0, 0, 0.049),
-  0px 3px 2px 2px rgba(0, 0, 0, 0.12);
+    -5px 6px 5px 2px rgba(0, 0, 0, 0.049), 0px 3px 2px 2px rgba(0, 0, 0, 0.12);
   height: 80%;
 }
 
-.number__image__phone{
+.number__image__phone {
   height: 100%;
 }
 
-.number__header__title{
+.number__header__title {
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--white);
   margin: 10px;
 }
 
-.number__header__description{
-  font-size: .8rem;
+.number__header__description {
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--primary-color);
 }
 
-.number__body{
+.number__body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20%;
+  height: 40%;
   width: 100%;
 }
 
-.number__body__form{
+.number__body__form {
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   width: 60%;
   height: 100%;
 }
 
-.number__body__phone{
+.number__body__phone {
   display: flex;
   border-radius: 10px;
   overflow: hidden;
@@ -307,7 +328,7 @@ input {
   height: 40px;
 }
 
-.number__body__phone--code{
+.number__body__phone--code {
   display: flex;
   background-color: var(--green);
   justify-content: center;
@@ -317,43 +338,42 @@ input {
   border-right: 10px solid var(--red);
 }
 
-.number__body__image--flag{
+.number__body__image--flag {
   height: 60%;
 }
 
-.number__body__image--code{
-  font-size: .9rem;
+.number__body__image--code {
+  font-size: 0.9rem;
   font-weight: 400;
   font-style: italic;
   color: var(--primary-color);
   margin-left: 2px;
 }
 
-.number__input__phone{
+.number__input__phone {
   font-size: 1.3rem;
   font-family: poppins;
   color: var(--primary-color);
   margin-left: 15px;
   margin-right: 10px;
   width: 70%;
-  
 }
 
-.number__footer{
+.number__footer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5%;
 }
-.number__footer__botton{
+.number__footer__botton {
   background-color: var(--primary-color);
 }
 
-.number__footer__botton:hover{
-  background-color: #364f6bdc
+.number__footer__botton:hover {
+  background-color: #364f6bdc;
 }
 
-.number__wave{
+.number__wave {
   position: absolute;
   top: 0;
   z-index: -1;
@@ -361,24 +381,22 @@ input {
 
 /* change_password */
 
-
-.change_password__header{
+.change_password__header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.change_password__header__title{
+.change_password__header__title {
   font-size: 2rem;
 }
 
-
-.change_password__body{
-  border: none;  
+.change_password__body {
+  border: none;
 }
 
-.change_password__body__form{
+.change_password__body__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -387,7 +405,7 @@ input {
   height: 80%;
 }
 
-.change_password__body__password{
+.change_password__body__password {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -395,6 +413,10 @@ input {
   height: 100%;
 }
 
-.change_password_body__icon--eye{
+.change_password_body__icon--eye {
   height: 30px;
+}
+
+.input-error {
+  border: 1px solid var(--red);
 }

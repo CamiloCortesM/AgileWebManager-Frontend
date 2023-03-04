@@ -1,7 +1,25 @@
+import { useState } from "react";
+
 export const NumberPage = () => {
+  const [number, setNumber] = useState("");
+
+  const onInputChange = ({ target }) => {
+    const value = target.value;
+    if (value.length > 10) return;
+    const isValid = /^\d*$/.test(value);
+    if (!isValid) return;
+    setNumber(target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const numberPhone = "+57" + number;
+    console.log(numberPhone);
+  };
+
   return (
     <div className="container__number">
-        <img
+      <img
         className="number__wave"
         src="/public/icons/wave-number.svg"
         alt="wave"
@@ -21,7 +39,7 @@ export const NumberPage = () => {
           </p>
         </div>
         <div className="number__body">
-          <form className="number__body__form">
+          <form className="number__body__form" onSubmit={onSubmit}>
             <div className="number__body__phone">
               <div className="number__body__phone--code">
                 <img
@@ -34,13 +52,16 @@ export const NumberPage = () => {
               <input
                 placeholder="- - - - - - - - - - -"
                 type="text"
+                name="number"
+                value={number}
+                onChange={onInputChange}
                 className="number__input__phone input"
               />
             </div>
+            <div className="number__footer">
+              <button className="number__footer__botton botton" type="submit">Send</button>
+            </div>
           </form>
-        </div>
-        <div className="number__footer">
-        <button className="number__footer__botton botton">Send</button>
         </div>
       </div>
     </div>

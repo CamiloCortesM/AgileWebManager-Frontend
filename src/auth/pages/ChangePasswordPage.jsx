@@ -1,47 +1,129 @@
+import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
+
+const passwordFields = {
+  password1: "",
+  password2: "",
+};
 export const ChangePasswordPage = () => {
+  const [viewPassword, setViewPassword] = useState(false);
+  const [viewSecondPassword, setViewSecondPassword] = useState(false);
+
+  const [error, setError] = useState("");
+  const { password1, password2, onInputChange } = useForm(passwordFields);
+
+  const onTogglePasswordVisibility = (index) => {
+    if (index == 0) {
+      setViewPassword(!viewPassword);
+      return;
+    }
+    setViewSecondPassword(!viewSecondPassword);
+  };
+
+  const onChangePassword = (e) => {
+    e.preventDefault();
+    if (password1 === password2) {
+      const regexLength = /^.{8,}$/;
+      const regexUpper = /[A-Z]/;
+      const regexLower = /[a-z]/;
+      const regexNumber = /\d/;
+      const regexSpecial = /[$-/:-?{-~!"^_`@\[\]]/;
+      if (
+        regexLength.test(password1) &&
+        regexUpper.test(password1) &&
+        regexLower.test(password1) &&
+        regexNumber.test(password1) &&
+        regexSpecial.test(password1)
+      ) {
+        setError("");
+        console.log(password1);
+      } else {
+        setError(
+          "the password is not secure"
+        );
+      }
+    } else {
+      setError("Passwords are not the same");
+    }
+  };
   return (
     <div className="change_password">
       <div className="change_password__header">
         <h2 className="change_password__header__title">Change Password</h2>
         <p className="change_password__header__description">
-          change password to a password with the required security parameters
+          The password must have at least the following parameters: Password
+          minimum 8 characters, uppercase, lowercase, number, special character.
         </p>
       </div>
       <div className="change_password__errors">
-        <p></p>
+        <p>{error}</p>
       </div>
       <div className="change_password__body">
-        <form className="change_password__body__form">
-          <div className="change_password__body__password change_password__input">
+        <form
+          className="change_password__body__form"
+          onSubmit={onChangePassword}
+        >
+          <div
+            className={
+              !error
+                ? "change_password__body__password change_password__input"
+                : "change_password__body__password change_password__input input-error"
+            }
+          >
             <input
               placeholder="Password"
-              type="password"
+              type={viewPassword ? "text" : "password"}
+              name="password1"
+              value={password1}
+              onChange={onInputChange}
               className="change_password__input__password input"
             />
             <img
+              onClick={() => onTogglePasswordVisibility(0)}
               className="change_password_body__icon--eye"
-              src="/public/icons/eye-off-svgrepo-com.svg"
+              src={
+                viewPassword
+                  ? "/public/icons/eye-svgrepo-com.svg"
+                  : "/public/icons/eye-off-svgrepo-com.svg"
+              }
               alt="eye-icon"
             />
           </div>
-          <div className="change_password__body__password change_password__input">
+          <div
+            className={
+              !error
+                ? "change_password__body__password change_password__input"
+                : "change_password__body__password change_password__input input-error"
+            }
+          >
             <input
-              type="password"
+              type={viewSecondPassword ? "text" : "password"}
               placeholder="Repeat Password"
+              name="password2"
+              value={password2}
+              onChange={onInputChange}
               className="change_password__input__password input"
             />
             <img
+              onClick={() => onTogglePasswordVisibility(1)}
               className="change_password_body__icon--eye"
-              src="/public/icons/eye-svgrepo-com.svg"
+              src={
+                viewSecondPassword
+                  ? "/public/icons/eye-svgrepo-com.svg"
+                  : "/public/icons/eye-off-svgrepo-com.svg"
+              }
               alt="eye-icon"
             />
+          </div>
+          <div className="change_password__footer">
+            <button
+              className="change_password__footer__botton botton"
+              type="submit"
+            >
+              Submit
+            </button>
           </div>
         </form>
-      </div>
-      <div className="change_password__footer">
-        <button className="change_password__footer__botton botton">
-          Submit
-        </button>
       </div>
     </div>
   );
