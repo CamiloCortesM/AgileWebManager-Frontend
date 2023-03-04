@@ -4,6 +4,11 @@ import { AuthRoutes } from "../auth/routes/AuthRoutes";
 
 export const AppRouter = () => {
   const state = "not-authenticated";
+
+  if (state === "checking") {
+    return <h3>Cargando...</h3>;
+  }
+
   return (
     <Routes>
       {state === "authenticated" ? (
