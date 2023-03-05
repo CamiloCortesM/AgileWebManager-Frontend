@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { useAuthStore } from "../../hooks/useAuthStore";
 
 export const NumberPage = () => {
   const [number, setNumber] = useState("");
 
-  const { startSendNumber } = useAuthStore();
+  const { startSendNumber, errorMessage } = useAuthStore();
 
   const onInputChange = ({ target }) => {
     const value = target.value;
@@ -20,6 +21,11 @@ export const NumberPage = () => {
     startSendNumber({ phone: numberPhone });
   };
 
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire("Error in the phone number", errorMessage, "error");
+    }
+  }, [errorMessage]);
   return (
     <div className="container__number">
       <img
