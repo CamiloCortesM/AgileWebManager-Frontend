@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
 import "./styles.css";
@@ -16,6 +18,12 @@ export const LoginPage = () => {
     startLogin({ email: email, password: password });
   };
 
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire("Error logging in", errorMessage, "error");
+    }
+  }, [errorMessage]);
+
   return (
     <div className="Login">
       <div className="login__header">
@@ -23,9 +31,6 @@ export const LoginPage = () => {
         <p className="login__header__description">
           login using email and password
         </p>
-      </div>
-      <div className="login__errors">
-        <p>{errorMessage}</p>
       </div>
       <div className="login__body">
         <form className="login__body__form" onSubmit={loginSubmit}>

@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import agileWebApi from "../api/agileWebApi";
 import {
+  clearErrorMessage,
   onChecking,
   onCreate,
+  onError,
   onLogin,
   onLogout,
   onUpdate,
@@ -14,7 +16,7 @@ export const useAuthStore = () => {
   const dispatch = useDispatch();
 
   const startLogin = async ({ email, password }) => {
-    dispatch(onChecking());
+    // dispatch(onChecking());
     try {
       const { data } = await agileWebApi.post("/auth", { email, password });
       if (data.phone) {
@@ -34,6 +36,9 @@ export const useAuthStore = () => {
     } catch (error) {
       const { data } = error.response;
       dispatch(onLogout(data.msg));
+      setTimeout(() => {
+        dispatch(clearErrorMessage());
+      }, 10);
     }
   };
 
@@ -52,7 +57,11 @@ export const useAuthStore = () => {
         })
       );
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      dispatch(onError(data?.msg || "Invalid number"));
+      setTimeout(() => {
+        dispatch(clearErrorMessage());
+      }, 10);
     }
   };
 
@@ -76,7 +85,11 @@ export const useAuthStore = () => {
         dispatch(onVerify());
       }
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      dispatch(onError(data?.msg || "invalid verification code"));
+      setTimeout(() => {
+        dispatch(clearErrorMessage());
+      }, 10);
     }
   };
 
@@ -126,7 +139,11 @@ export const useAuthStore = () => {
       localStorage.setItem("token", data.token);
       dispatch(onVerify());
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      dispatch(onError(data?.msg || "the password cannot be the same"));
+      setTimeout(() => {
+        dispatch(clearErrorMessage());
+      }, 10);
     }
   };
   return {
