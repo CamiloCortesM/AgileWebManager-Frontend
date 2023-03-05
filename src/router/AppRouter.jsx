@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthenticateRoutes } from "../agile-web-manager";
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
 import { useAuthStore } from "../hooks/useAuthStore";
+import "./style.css";
 
 export const AppRouter = () => {
   const { state, checkAuthToken } = useAuthStore();
@@ -12,7 +13,11 @@ export const AppRouter = () => {
   }, []);
 
   if (state === "checking") {
-    return <h3>Cargando...</h3>;
+    return (
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    );
   }
 
   return (
