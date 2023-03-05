@@ -31,6 +31,7 @@ export const useAuthStore = () => {
           status: data.status,
           role: data.role,
           phone: data.phone,
+          email,
         })
       );
     } catch (error) {
@@ -80,6 +81,7 @@ export const useAuthStore = () => {
           status: user.status,
           role: user.role,
           phone: user.phone,
+          email: user.email,
         });
         localStorage.setItem("token", data.token);
         dispatch(onVerify());
@@ -107,6 +109,7 @@ export const useAuthStore = () => {
           status: data.status,
           role: data.role,
           phone: data.phone,
+          email: data.email,
         })
       );
       dispatch(onVerify());
@@ -135,6 +138,7 @@ export const useAuthStore = () => {
         status: user.status,
         role: user.role,
         phone: user.phone,
+        email: user.email,
       });
       localStorage.setItem("token", data.token);
       dispatch(onVerify());
@@ -146,6 +150,12 @@ export const useAuthStore = () => {
       }, 10);
     }
   };
+
+  const startLogout = () => {
+    localStorage.clear();
+    dispatch(onLogout());
+  };
+
   return {
     //* Properties
     state,
@@ -158,5 +168,6 @@ export const useAuthStore = () => {
     startAuthenticationNumber,
     checkAuthToken,
     ChangeThePassword,
+    startLogout,
   };
 };
