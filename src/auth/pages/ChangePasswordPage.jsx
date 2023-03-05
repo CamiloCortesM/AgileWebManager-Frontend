@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
 
 const passwordFields = {
@@ -6,6 +7,7 @@ const passwordFields = {
   password2: "",
 };
 export const ChangePasswordPage = () => {
+  const { ChangeThePassword } = useAuthStore();
   const [viewPassword, setViewPassword] = useState(false);
   const [viewSecondPassword, setViewSecondPassword] = useState(false);
 
@@ -36,11 +38,9 @@ export const ChangePasswordPage = () => {
         regexSpecial.test(password1)
       ) {
         setError("");
-        console.log(password1);
+        ChangeThePassword({password:password1});
       } else {
-        setError(
-          "the password is not secure"
-        );
+        setError("the password is not secure");
       }
     } else {
       setError("Passwords are not the same");

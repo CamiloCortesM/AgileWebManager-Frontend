@@ -1,3 +1,4 @@
+import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
 import "./styles.css";
 
@@ -8,10 +9,11 @@ const loginformfield = {
 
 export const LoginPage = () => {
   const { onInputChange, email, password } = useForm(loginformfield);
+  const { startLogin, errorMessage } = useAuthStore();
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    startLogin({ email: email, password: password });
   };
 
   return (
@@ -23,7 +25,7 @@ export const LoginPage = () => {
         </p>
       </div>
       <div className="login__errors">
-        <p></p>
+        <p>{errorMessage}</p>
       </div>
       <div className="login__body">
         <form className="login__body__form" onSubmit={loginSubmit}>

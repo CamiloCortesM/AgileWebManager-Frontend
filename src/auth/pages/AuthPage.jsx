@@ -1,13 +1,16 @@
 import { useRef } from "react";
+import { useAuthStore } from "../../hooks/useAuthStore";
 import { FormAuth, HeaderAuth } from "../components";
 
 export const AuthPage = () => {
   const inputs = useRef([]);
 
+  const { startAuthenticationNumber, errorMessage } = useAuthStore();
+
   const onNumberAuthentication = (e) => {
     e.preventDefault();
     const code = inputs.current.map((input) => input.value).join("");
-    console.log(code);
+    startAuthenticationNumber({ code });
   };
 
   const handleInput = (event, index) => {
@@ -34,7 +37,7 @@ export const AuthPage = () => {
       <div className="auth">
         <HeaderAuth />
         <div className="auth__body">
-          <p className="auth__error">incorrect verification code</p>
+          <p className="auth__error">{errorMessage}</p>
           <FormAuth
             handleInput={handleInput}
             handleKeyDown={handleKeyDown}
