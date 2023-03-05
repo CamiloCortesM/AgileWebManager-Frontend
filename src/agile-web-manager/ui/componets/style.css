@@ -65,6 +65,7 @@
     font-family: inherit;
 }
 
+
 .navbar__account:hover {
     border: 2px solid var(--white);
 }
@@ -164,4 +165,9 @@
 
 .navbar__menu__list--name-full {
     font-size: .9rem;
+}
+
+.navbar__menu__list--container{
+    width: 100%;
+    overflow: hidden;
 }
