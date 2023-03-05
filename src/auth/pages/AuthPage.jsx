@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { FormAuth, HeaderAuth } from "../components";
 
@@ -27,6 +28,12 @@ export const AuthPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire("authentication failed", errorMessage, "error");
+    }
+  }, [errorMessage]);
+
   return (
     <div className="container__auth">
       <img
@@ -37,7 +44,6 @@ export const AuthPage = () => {
       <div className="auth">
         <HeaderAuth />
         <div className="auth__body">
-          <p className="auth__error">{errorMessage}</p>
           <FormAuth
             handleInput={handleInput}
             handleKeyDown={handleKeyDown}
