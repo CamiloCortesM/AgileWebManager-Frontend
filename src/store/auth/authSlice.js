@@ -13,8 +13,8 @@ export const authSlice = createSlice({
       state.user = {};
       state.errorMessage = undefined;
     },
-    onPhone: (state, { payload }) => {
-      state.user = { ...state.user, phone: payload.phone };
+    onUpdate: (state, { payload }) => {
+      state.user = {  ...state.user ,...payload  };
       state.errorMessage = undefined;
     },
     onLogin: (state, { payload }) => {
@@ -48,5 +48,5 @@ export const {
   onLogout,
   onVerify,
   clearErrorMessage,
-  onPhone,
+  onUpdate,
 } = authSlice.actions;
