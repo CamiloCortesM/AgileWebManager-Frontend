@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
 
@@ -7,7 +8,7 @@ const passwordFields = {
   password2: "",
 };
 export const ChangePasswordPage = () => {
-  const { ChangeThePassword } = useAuthStore();
+  const { ChangeThePassword ,errorMessage} = useAuthStore();
   const [viewPassword, setViewPassword] = useState(false);
   const [viewSecondPassword, setViewSecondPassword] = useState(false);
 
@@ -40,12 +41,18 @@ export const ChangePasswordPage = () => {
         setError("");
         ChangeThePassword({password:password1});
       } else {
-        setError("the password is not secure");
+        Swal.fire("erorr in password", "the password is not secure", "error")
       }
     } else {
-      setError("Passwords are not the same");
+      Swal.fire("erorr in password", "Passwords are not the same", "error")
     }
   };
+
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire("authentication failed", errorMessage, "error");
+    }
+  }, [errorMessage]);
   return (
     <div className="change_password">
       <div className="change_password__header">
@@ -54,9 +61,6 @@ export const ChangePasswordPage = () => {
           The password must have at least the following parameters: Password
           minimum 8 characters, uppercase, lowercase, number, special character.
         </p>
-      </div>
-      <div className="change_password__errors">
-        <p>{error}</p>
       </div>
       <div className="change_password__body">
         <form
