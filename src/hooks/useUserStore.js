@@ -69,10 +69,10 @@ export const useUserStore = () => {
 
   const startUpdateUser = async (User) => {
     try {
-      await agileWebApi.put(`/auth/${User.id}`, {
+      const { data } = await agileWebApi.put(`/auth/${User.id}`, {
         ...User,
       });
-      dispatch(onUpdateUser(User));
+      dispatch(onUpdateUser(data.user));
       Swal.fire("update", "User has been successfully edited", "success");
     } catch (error) {
       Swal.fire(
