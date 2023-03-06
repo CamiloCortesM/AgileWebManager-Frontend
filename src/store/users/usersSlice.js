@@ -36,6 +36,11 @@ export const usersSlice = createSlice({
         return user;
       });
     },
+    onLogoutUsers: (state) => {
+      state.errorMessage = null;
+      state.users = [];
+      state.activeUser = null;
+    },
   },
 });
 
@@ -46,4 +51,5 @@ export const {
   onUpdateUser,
   onSetActiveUser,
   onDeleteActiveUser,
+  onLogoutUsers,
 } = usersSlice.actions;
