@@ -1,72 +1,36 @@
-import { useState } from 'react';
-import { AddTarjet, ChangeTodo, DeleteTodo } from '../index';
+import { DeleteTodo } from '../index';
 import '../style.css';
 
-export const Done = () => {
-    const [addTarjet, setAddTarjet] = useState(false);
+export const Done = ({ name, status, comments, id, startDeleteTodo }) => {
 
     return (
-        <div className="todo">
-            <h2 className="todo__title">todo</h2>
-            <ul className="todo__tarjet__container">
+        <>
+            {
+                (status == "done") &&
                 <li className="todo__tarjet">
-                    <h3 className="todo__tarjet__subtitle">Ya juegue</h3>
+                    <h3 className="todo__tarjet__subtitle">{name}</h3>
                     <div className="todo__tarjet__icons">
                         <img
-                            src="public/icons/text.svg"
+                            src="/public/icons/text.svg"
                             className="todo__tarjet__text"
                             alt="text.svg"
                         ></img>
                         <div className="todo__tarjet__comments">
                             <img
-                                src="public/icons/message.svg"
+                                src="/public/icons/message.svg"
                                 className="todo__tarjet__message"
                                 alt="message.svg"
                             ></img>
-                            2
+                            {comments.length}
                         </div>
                         <div className="todo__tarjet__space"></div>
-                        <ChangeTodo />
-                        <DeleteTodo />
+                        <DeleteTodo
+                            id={id}
+                            startDeleteTodo={startDeleteTodo}
+                        />
                     </div>
                 </li>
-            </ul>
-
-            {
-                addTarjet
-                    ?
-                    <>
-                        <AddTarjet />
-                        <div className="todo__add-tarjet__create">
-                            <span
-                                onClick={() => { }}
-                            >
-                                <img
-                                    className="todo__add-tarjet__confirm"
-                                    src="public/icons/check.svg" alt="check.svg"
-                                />
-                            </span>
-                            <span
-                                onClick={() => setAddTarjet(false)}
-                            >
-                                <img
-                                    className="todo__add-tarjet__cancel"
-                                    src="public/icons/x.svg" alt="x.svg"
-                                />
-                            </span>
-                        </div>
-                    </>
-                    : <span
-                        onClick={() => setAddTarjet(true)}
-                        className="todo__add-tarjet"
-                    >
-                        <img
-                            className="todo__add-tarjet__add"
-                            src="public/icons/plus.svg"
-                            alt="plus.svg"
-                        />
-                        Add tarjet</span>
             }
-        </div>
+        </>
     )
 }

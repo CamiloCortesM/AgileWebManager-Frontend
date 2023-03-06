@@ -1,4 +1,4 @@
-.create-table-modal {
+.edit-todo-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,22 +11,22 @@
     z-index: 9999;
 }
 
-.create-table-modal__container {
+.edit-todo-modal__container {
     background-color: var(--white);
-    height: 40%;
+    height: 55%;
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
     align-items: start;
     box-shadow: 0 0 5px #808080;
 }
 
-.create-table-modal__form {
+.edit-todo-modal__form {
     width: 100%;
 }
 
-.create-table-modal__input {
+.edit-todo-modal__input {
     display: flex;
     border: 1px solid var(--secondary-color);
     width: 90%;
@@ -39,28 +39,28 @@
     resize: none;
 }
 
-.create-table-modal__input:focus {
+.edit-todo-modal__input:focus {
     outline: none;
     box-shadow: 0 0 5px var(--secondary-color);
     transition: all .3s ease;
 }
 
 
-.create-table-modal__input::-webkit-scrollbar {
+.edit-todo-modal__input::-webkit-scrollbar {
     width: 0;
     background-color: transparent;
 }
 
-.create-table-modal__input:focus::-webkit-scrollbar {
+.edit-todo-modal__input:focus::-webkit-scrollbar {
     width: 10px;
 }
 
-.create-table-modal__input:focus::-webkit-scrollbar-thumb {
+.edit-todo-modal__input:focus::-webkit-scrollbar-thumb {
     background: #666;
     border-radius: 20px;
 }
 
-.create-table-modal__title {
+.edit-todo-modal__title {
     font-weight: 400;
     padding: 0 10px;
     background-color: var(--primary-color);
@@ -72,22 +72,22 @@
     position: relative;
 }
 
-.create-table-modal__title__h2 {
+.edit-todo-modal__title__h2 {
     font-weight: 400;
 }
 
-.create-table-modal__subtitle {
+.edit-todo-modal__subtitle {
     font-weight: 100;
     margin: 10px 10px 0 10px;
 }
 
-.create-table-modal__buttons {
+.edit-todo-modal__buttons {
     display: flex;
     justify-content: end;
     margin: 10px 0 15px 0;
 }
 
-.create-table-modal__button {
+.edit-todo-modal__button {
     padding: 5px 10px;
     border-radius: 10px;
     border: none;
@@ -95,24 +95,24 @@
     cursor: pointer;
 }
 
-.create-table-modal__button__close:hover {
+.edit-todo-modal__button__close:hover {
     box-shadow: 0 0 5px var(--red);
 }
 
-.create-table-modal__button__create:hover {
+.edit-todo-modal__button__create:hover {
     box-shadow: 0 0 5px var(--primary-color);
 }
 
-.create-table-modal__button__create {
+.edit-todo-modal__button__create {
     margin: 0 20px 0 10px;
     background-color: var(--primary-color);
 }
 
-.create-table-modal__button__close {
+.edit-todo-modal__button__close {
     background-color: var(--red);
 }
 
-.create-table-modal__title__x {
+.edit-todo-modal__title__x {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -122,13 +122,36 @@
     cursor: pointer;
 }
 
-.create-table-modal__input--invalid {
+.edit-todo-modal__input--invalid {
     transition: all .3s;
     border: 1px solid var(--red);
 }
 
-.create-table-modal__input--invalid:focus {
+.edit-todo-modal__input--invalid:focus {
     outline: none;
     box-shadow: 0 0 5px var(--red);
     transition: all .3s ease;
 }
+
+.edit-todo-modal__select{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-todo-modal__combobox{
+    width: 40%;
+    margin: 0 10px;
+    border-radius: 5px;
+    padding: 3px;
+    border-color: var(--secondary-color);
+}
+
+.edit-todo-modal__combobox:focus{
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+
+
+
+
+

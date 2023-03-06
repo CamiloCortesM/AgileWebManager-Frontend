@@ -1,4 +1,3 @@
-export * from './components/add-tarjet/AddTarjet';
 export * from './components/change-todo/ChangeTodo';
 export * from './components/delete-todo/DeleteTodo';
 export * from './components/todo-in-progress/InProgress';

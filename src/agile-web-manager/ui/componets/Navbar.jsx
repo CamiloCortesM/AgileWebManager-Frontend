@@ -43,7 +43,7 @@ export const Navbar = () => {
             </div>
           </div>
           <button className="navbar__menu__list navbar__menu__confi">
-            Manage Account
+            Account
           </button>
           <button
             className="navbar__menu__list navbar__menu__close"

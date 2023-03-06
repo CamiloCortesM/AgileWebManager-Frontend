@@ -7,7 +7,7 @@ export const ChangeTodo = () => {
         <div className="change-todo">
             <span>
                 <img
-                    src="public/icons/arrow.svg"
+                    src="/public/icons/arrow.svg"
                     alt="arrow.svg"
                     className="change-todo__move"
                 />

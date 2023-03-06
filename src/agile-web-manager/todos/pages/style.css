@@ -3,6 +3,26 @@
     margin: 0 auto;
 }
 
+.todo {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 10px;
+    background-color: rgb(236, 236, 236);
+    box-shadow: 0 0 4px var(--primary-color);
+    border-radius: 2px;
+    height: min-content;
+    max-height: 475px;
+    min-width: 300px;
+}
+
+.todo__title {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-weight: 200;
+    font-size: 1.2rem;
+}
 
 .todo-pages__title{
     margin: 10px;
@@ -26,3 +46,4 @@
     background: #808080;
     border-radius: 10px;
 }
+

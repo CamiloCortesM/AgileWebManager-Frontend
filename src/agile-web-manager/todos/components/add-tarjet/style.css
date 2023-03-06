@@ -8,4 +8,43 @@
     background-color: var(--white);
     padding: 0 5px;
     box-shadow: 0 0 5px var(--primary-color);
+    border: none;
+}
+
+
+.todo__add-tarjet__create {
+    display: flex;
+    justify-content: center;
+}
+
+.todo__add-tarjet__confirm {
+    cursor: pointer;
+    margin: 0 20px 10px 0;
+}
+
+.todo__add-tarjet__confirm:hover {
+    filter: drop-shadow(0px 0px 2px var(--secondary-color));
+}
+
+.todo__add-tarjet__cancel {
+    cursor: pointer;
+    width: 25px;
+}
+
+.todo__add-tarjet__cancel:hover {
+    filter: drop-shadow(0px 0px 2px var(--red));
+
+}
+
+.todo__add-tarjet__add{
+    width: 20px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.todo__add-tarjet__create__button{
+    width: 25px;
+    display: flex;
+    border: none;
+    background-color: inherit;
 }
