@@ -10,6 +10,7 @@ import {
   onUpdate,
   onVerify,
 } from "../store";
+import { onLogoutUsers } from "../store/users/usersSlice";
 
 export const useAuthStore = () => {
   const { state, user, errorMessage } = useSelector((state) => state.auth);
@@ -154,6 +155,7 @@ export const useAuthStore = () => {
   const startLogout = () => {
     localStorage.clear();
     dispatch(onLogout());
+    dispatch(onLogoutUsers());
   };
 
   return {
