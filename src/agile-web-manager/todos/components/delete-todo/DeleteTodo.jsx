@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useDeferredValue, useState } from 'react';
 import './style.css';
 
-export const DeleteTodo = () => {
+export const DeleteTodo = ({ id, startDeleteTodo }) => {
     const [onDeleteTodo, setOnDeleteTodo] = useState(false);
 
     const toggleDelete = () => {
         setOnDeleteTodo(!onDeleteTodo);
     };
 
+    const deleteTOdo = async () => {
+        await startDeleteTodo({ id: id });
+    }
     return (
         <div className="delete-todo">
             {
@@ -18,7 +21,7 @@ export const DeleteTodo = () => {
                             className="delete-todo__button">
                             <>
                                 <img
-                                    src="public/icons/trash.svg"
+                                    src="/public/icons/trash.svg"
                                     alt="trash.svg"
                                     className="delete-todo__button__trash"
                                 />
@@ -32,15 +35,16 @@ export const DeleteTodo = () => {
                         >
                             <img
                                 className="delete-todo__cancel"
-                                src="public/icons/x.svg"
+                                src="/public/icons/x.svg"
                                 alt="x.svg"
                             />
                         </span>
                         <span
+                            onClick={deleteTOdo}
                         >
                             <img
                                 className="delete-todo__check"
-                                src="public/icons/check.svg"
+                                src="/public/icons/check.svg"
                                 alt="check.svg"
                             />
                         </span>
