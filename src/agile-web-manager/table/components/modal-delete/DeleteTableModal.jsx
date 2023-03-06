@@ -1,8 +1,13 @@
 import './style.css';
 
-export const DeleteTableModal = ({ toggleModalDelete }) => {
+export const DeleteTableModal = ({ toggleModalDelete, idDelete, startDeleteTable }) => {
 
     const handleDelete = () => {
+        toggleModalDelete();
+    }
+
+    const deleteTable = async(idDelete) => {
+        await startDeleteTable({ id: idDelete });
         toggleModalDelete();
     }
 
@@ -18,8 +23,16 @@ export const DeleteTableModal = ({ toggleModalDelete }) => {
                 </span>
                 <p className="delete-table-modal__p">Are you sure you want to delete your table?</p>
                 <div className="delete-table-modal__buttons">
-                    <button onClick={handleDelete} className="delete-table-modal__button delete-table-modal__button__cancel">Cancel</button>
-                    <button className="delete-table-modal__button delete-table-modal__button__delete">Delete</button>
+                    <button
+                        type="button"
+                        onClick={handleDelete}
+                        className="delete-table-modal__button delete-table-modal__button__cancel"
+                    >Cancel</button>
+                    <button
+                        type="button"
+                        onClick={() => deleteTable(idDelete)}
+                        className="delete-table-modal__button delete-table-modal__button__delete"
+                    >Delete</button>
                 </div>
             </div>
         </div>
