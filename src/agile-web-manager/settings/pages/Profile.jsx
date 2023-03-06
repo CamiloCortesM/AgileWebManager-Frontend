@@ -8,7 +8,7 @@ export default function Profile() {
         <div className="profile__desc">
           <h1 className="profile__desc--title">Profile</h1>
           <p className="profile__desc--description">
-            view your personal information and manage your user name
+            view your personal information, if you want to change anything contact the administrator
           </p>
         </div>
         <div className="profile__header">
