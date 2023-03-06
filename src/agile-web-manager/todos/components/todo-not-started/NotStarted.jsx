@@ -2,7 +2,7 @@ import { ChangeTodo, DeleteTodo } from '../index';
 
 import '../style.css';
 
-export const NotStarted = ({ name, status, comments, id, desc, startDeleteTodo, startSetActiveTodo, toggleModalEdit }) => {
+export const NotStarted = ({ name, status, user, comments, id, desc, startDeleteTodo, startSetActiveTodo, toggleModalEdit }) => {
 
     const handleGetInfoTodo = () => {
         toggleModalEdit(true);
@@ -14,7 +14,7 @@ export const NotStarted = ({ name, status, comments, id, desc, startDeleteTodo, 
             {
                 (status == "start") &&
                 <li className="todo__tarjet">
-                    <span onClick={handleGetInfoTodo}>
+                    <span onClick={handleGetInfoTodo && user !== "readOnly"}>
                         <h3 className="todo__tarjet__subtitle">{name}</h3>
                     </span>
                     <div className="todo__tarjet__icons">
@@ -32,10 +32,13 @@ export const NotStarted = ({ name, status, comments, id, desc, startDeleteTodo, 
                             {comments.length}
                         </div>
                         <div className="todo__tarjet__space"></div>
-                        <DeleteTodo
-                            id={id}
-                            startDeleteTodo={startDeleteTodo}
-                        />
+                        {
+                            user !== "readOnly" &&
+                            <DeleteTodo
+                                id={id}
+                                startDeleteTodo={startDeleteTodo}
+                            />
+                        }
                     </div>
                 </li>
 
