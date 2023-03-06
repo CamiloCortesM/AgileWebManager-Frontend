@@ -36,6 +36,7 @@
     border-radius: 15px;
     font-weight: 200;
     font-family: inherit;
+    resize: none;
 }
 
 .create-table-modal__input:focus {
@@ -44,13 +45,6 @@
     transition: all .3s ease;
 }
 
-.create-table-modal__input__textarea {
-    overflow-x: hidden;
-    max-height: 70px;
-    min-height: 70px;
-    min-width: 90%;
-    max-width: 90%;
-}
 
 .create-table-modal__input::-webkit-scrollbar {
     width: 0;
@@ -126,4 +120,15 @@
     border-radius: 50%;
     box-shadow: 0 0 5px var(--primary-color);
     cursor: pointer;
+}
+
+.create-table-modal__input--invalid {
+    transition: all .3s;
+    border: 1px solid var(--red);
+}
+
+.create-table-modal__input--invalid:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--red);
+    transition: all .3s ease;
 }
