@@ -81,7 +81,7 @@
 }
 
 .item__active {
-  color: rgb(55, 55, 238);
+  color: var(--red);
   background-color: rgba(0, 0, 0, 0.08);
 }
 
