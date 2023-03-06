@@ -4,7 +4,6 @@
     color: var(--white);
 }
 
-
 .navbar__container {
     display: flex;
     align-items: center;
@@ -20,7 +19,7 @@
 }
 
 .navbar__title::before {
-    content: url('public/icons/cat.svg');
+    content: url('/public/icons/cat.svg');
     margin: 0 10px;
     vertical-align: middle;
 
@@ -97,6 +96,7 @@
     color: #000;
     box-shadow: 0 0 5px #a09e9e;
     max-width: 250px;
+    z-index: 500;
 }
 
 .navbar__menu__list {
@@ -136,12 +136,12 @@
 }
 
 .navbar__menu__confi::after {
-    content: url('public/icons/cog.svg');
+    content: url('/public/icons/cog.svg');
     margin-top: 5px;
 }
 
 .navbar__menu__close::after {
-    content: url('public/icons/exit.svg');
+    content: url('/public/icons/exit.svg');
     margin-top: 5px;
 }
 
