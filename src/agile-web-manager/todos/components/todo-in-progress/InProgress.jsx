@@ -1,7 +1,7 @@
 import { DeleteTodo } from '../index';
 import '../style.css'
 
-export const InProgress = ({  name, status, comments, id, desc, startDeleteTodo, startSetActiveTodo, toggleModalEdit}) => {
+export const InProgress = ({ name, status, comments, id, desc, user, startDeleteTodo, startSetActiveTodo, toggleModalEdit }) => {
 
   const handleGetInfoTodo = () => {
     toggleModalEdit(true);
@@ -10,12 +10,15 @@ export const InProgress = ({  name, status, comments, id, desc, startDeleteTodo,
 
   return (
     <>
+
       {
         (status == "progress") &&
         <li className="todo__tarjet">
-          <span onClick={handleGetInfoTodo}>
-            <h3 className="todo__tarjet__subtitle">{name}</h3>
-          </span>
+          
+            <span onClick={handleGetInfoTodo && user !== "readOnly"}>
+              <h3 className="todo__tarjet__subtitle">{name}</h3>
+            </span>
+
           <div className="todo__tarjet__icons">
             <img
               src="/public/icons/text.svg"
@@ -31,10 +34,14 @@ export const InProgress = ({  name, status, comments, id, desc, startDeleteTodo,
               {comments.length}
             </div>
             <div className="todo__tarjet__space"></div>
-            <DeleteTodo
-              id={id}
-              startDeleteTodo={startDeleteTodo}
-            />
+
+            {
+              user !== 'readOnly' &&
+              <DeleteTodo
+                id={id}
+                startDeleteTodo={startDeleteTodo}
+              />
+            }
           </div>
         </li>
       }
