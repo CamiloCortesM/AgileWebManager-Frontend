@@ -1,9 +1,10 @@
-.create-table {
-    display: flex;
-    height: 100%;
-    width: 90%;
-    margin: 20px;
-    flex-wrap: wrap;
+.links {
+    text-decoration: none;
+    max-width: 150px;
+    min-width: 100px;
+    flex: 1 1 20px;
+    margin: 0 5px;
+    color: var(--white);
 }
 
 .create-table__item {
@@ -15,9 +16,9 @@
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 3px #808080;
-    cursor: pointer;
     color: var(--white);
     position: relative;
+    cursor: pointer;
 }
 
 .create-table__title {
@@ -30,9 +31,12 @@
 
 .create-table__color {
     background-color: var(--primary-color);
+    display: flex;
+    text-decoration: none;
+
 }
 
-.create-table__delete{
+.create-table__delete {
     position: absolute;
     top: -5px;
     right: -5px;
@@ -42,3 +46,6 @@
     box-shadow: 0 0 5px var(--primary-color);
 }
 
+.create-table__item__p {
+    height: 100%;
+}
