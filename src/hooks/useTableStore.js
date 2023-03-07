@@ -5,12 +5,14 @@ import agileWebApi from '../api/agileWebApi';
 import {
     addNewTable,
     deleteTable,
-    onLoadTables
+    onLoadTables,
+    onUpdateTable,
+    onActivetable,
 } from '../store';
 
 export const useTableStore = () => {
 
-    const { tables } = useSelector((state) => state.table);
+    const { tables, tableActive } = useSelector((state) => state.table);
     const { user } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
@@ -44,15 +46,31 @@ export const useTableStore = () => {
         }
     };
 
+    const startUpdatedTable = async ({ id, name, desc }) => {
+        try {
+            const { data } = await agileWebApi.put(`tables/${id}`, { name: name, desc: desc });
+            dispatch(onUpdateTable(data.table));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const startSetActiveTable = (table) => {
+        dispatch(onActivetable(table));
+    };
+
     return {
         //* Properties
         tables,
         user,
+        tableActive,
 
         //* Methods
         startGetTables,
         startCreateTable,
         startDeleteTable,
+        startSetActiveTable,
+        startUpdatedTable,
     };
 }
 
