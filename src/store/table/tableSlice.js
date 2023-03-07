@@ -5,6 +5,7 @@ export const tableSlice = createSlice({
     initialState: {
         errorMessage: null,
         tables: [],
+        tableActive: null
     },
     reducers: {
         isLoading: (state) => {
@@ -24,6 +25,17 @@ export const tableSlice = createSlice({
                 state.tables.splice(index, 1);
             }
         },
+        onActivetable: (state, { payload }) => {
+            state.tableActive = payload;
+        },
+        onUpdateTable: (state, { payload }) => {
+            state.tables = state.tables.map(table => {
+                if (table.id === payload.id) {
+                    return payload
+                }
+                return table;
+            });
+        },
     }
 });
 
@@ -34,4 +46,6 @@ export const {
     onLoadTables,
     addNewTable,
     deleteTable,
+    onActivetable,
+    onUpdateTable,
 } = tableSlice.actions;
