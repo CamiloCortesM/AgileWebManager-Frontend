@@ -14,10 +14,10 @@ export const InProgress = ({ name, status, comments, id, desc, user, startDelete
       {
         (status == "progress") &&
         <li className="todo__tarjet">
-          
-            <span onClick={handleGetInfoTodo && user !== "readOnly"}>
-              <h3 className="todo__tarjet__subtitle">{name}</h3>
-            </span>
+
+          <span onClick={user !== "readOnly" && handleGetInfoTodo}>
+            <h3 className="todo__tarjet__subtitle">{name}</h3>
+          </span>
 
           <div className="todo__tarjet__icons">
             <img

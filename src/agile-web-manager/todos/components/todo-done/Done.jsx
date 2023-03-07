@@ -13,7 +13,7 @@ export const Done = ({ name, status, user, comments, id, desc, startDeleteTodo, 
             {
                 (status == "done") &&
                 <li className="todo__tarjet">
-                    <span onClick={handleGetInfoTodo && user !== "readOnly"}>
+                    <span onClick={user !== "readOnly" && handleGetInfoTodo}>
                         <h3 className="todo__tarjet__subtitle">{name}</h3>
                     </span>
                     <div className="todo__tarjet__icons">

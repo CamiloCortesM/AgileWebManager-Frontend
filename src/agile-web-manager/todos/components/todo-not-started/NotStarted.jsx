@@ -14,7 +14,7 @@ export const NotStarted = ({ name, status, user, comments, id, desc, startDelete
             {
                 (status == "start") &&
                 <li className="todo__tarjet">
-                    <span onClick={handleGetInfoTodo && user !== "readOnly"}>
+                    <span onClick={user !== "readOnly" && handleGetInfoTodo}>
                         <h3 className="todo__tarjet__subtitle">{name}</h3>
                     </span>
                     <div className="todo__tarjet__icons">
