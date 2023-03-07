@@ -26,7 +26,6 @@ export const TodoPages = () => {
   const { startGetTables } = useTableStore();
   const location = useParams();
   const [showModalEditTodo, setShowModalEditTodo] = useState(false);
-  console.log(tables);
 
 
   useEffect(() => {
