@@ -81,7 +81,7 @@ export const ManageAccounts = () => {
                 <td className="table__cell">{user.role}</td>
                 <td className="table__cell">{user.phone}</td>
                 <td className="table__cell">{user.status}</td>
-                <td className="table__cell">
+                <td className="table__cell table-cell-buttons">
                   <button
                     className="button button--edit"
                     onClick={() => handleModalUpdate(user)}

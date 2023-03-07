@@ -9,14 +9,15 @@ const createFields = {
   role: "",
 };
 
-export const Modal = ({ show, handleModal}) => {
-  const { onInputChange, name, email, password, role } = useForm(createFields);
+export const Modal = ({ show, handleModal }) => {
+  const { onInputChange, name, email, password, role, onResetForm } = useForm(createFields);
   const { startCreateUser } = useUserStore();
 
   const onSubmit = (e) => {
     e.preventDefault();
     startCreateUser({ name, email, password, role });
     handleModal();
+    onResetForm();
   };
   return (
     <div className={`modal ${show ? "show" : ""}`} onClick={handleModal}>

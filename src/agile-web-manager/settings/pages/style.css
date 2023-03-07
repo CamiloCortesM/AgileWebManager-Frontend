@@ -121,8 +121,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 98%;
 }
+
 .manage__title {
   text-align: center;
   width: 100%;
@@ -140,7 +141,7 @@
   width: 100%;
   margin: 10px;
   padding: 0 30px;
-}
+  }
 
 .button--create {
   cursor: pointer;
@@ -178,20 +179,24 @@
   background-color: #f5f5f5;
 }
 
-.table__cell .button{
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 15px;
-    margin-left: 10px;
-    color: white;
+.table__cell .button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  margin-left: 10px;
+  color: white;
 }
 
-.button--delete{
-    background-color: #dc3545;
+.button--delete {
+  background-color: #dc3545;
 }
 
-.button--edit{
-    background-color: slateblue;
+.button--edit {
+  background-color: slateblue;
 }
 
+.table-cell-buttons {
+  padding: 8px;
+  min-width: 160px;
+}
