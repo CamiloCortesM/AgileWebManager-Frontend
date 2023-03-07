@@ -16,20 +16,23 @@
 .navbar__title {
     cursor: pointer;
     font-size: 1rem;
+    color: var(--white);
+    
 }
 
-.navbar__title::before {
-    content: url('/public/icons/cat.svg');
+/* .navbar__title::before {
+    content: url('/public/icons/cat-halloween-kitty-svgrepo-com.svg');
     margin: 0 10px;
     vertical-align: middle;
-
-}
+    width: 20px;
+} */
 
 .navbar__tables {
     margin: 0 25px;
     transition: color .4s;
     font-size: .8rem;
     font-weight: 100;
+    color:var(--white)
 }
 
 
@@ -120,6 +123,7 @@
 .navbar__menu__p {
     font-size: .9rem;
     font-weight: 100;
+    text-decoration: none;
     
 }
 
@@ -170,4 +174,21 @@
 .navbar__menu__list--container{
     width: 100%;
     overflow: hidden;
+}
+
+.navbar--botton{
+    font-size: .9rem;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+}
+
+.navbar--cat{
+    width: 30px;
+    margin-right: 10px;
+}
+
+.navlink-title{
+    display: flex;
+    text-decoration: none;
 }

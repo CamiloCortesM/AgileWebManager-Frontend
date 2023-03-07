@@ -28,7 +28,6 @@ export const usersSlice = createSlice({
       }
     },
     onUpdateUser: (state, { payload }) => {
-      console.log(payload);
       state.users = state.users.map((user) => {
         if (user.id === payload.id) {
           return payload;
