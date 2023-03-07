@@ -7,6 +7,7 @@ export const useTodoStore = () => {
 
     const { todos, errorMessage, todoActive } = useSelector((state) => state.todo);
     const { tables } = useSelector((state) => state.table);
+    const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const startLoadTodos = async () => {
@@ -55,6 +56,7 @@ export const useTodoStore = () => {
         todos,
         tables,
         todoActive,
+        user,
 
         //* Methods
         startLoadTodos,

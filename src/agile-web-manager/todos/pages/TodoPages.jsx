@@ -15,6 +15,7 @@ export const TodoPages = () => {
     tables,
     todos,
     todoActive,
+    user,
     startLoadTodos,
     startSaveTodos,
     startDeleteTodo,
@@ -25,7 +26,6 @@ export const TodoPages = () => {
   const { startGetTables } = useTableStore();
   const location = useParams();
   const [showModalEditTodo, setShowModalEditTodo] = useState(false);
-  console.log(tables);
 
 
   useEffect(() => {
@@ -37,11 +37,11 @@ export const TodoPages = () => {
   const toggleModalEdit = () => {
     setShowModalEditTodo(!showModalEditTodo);
   };
-  const {id} = useParams()
+  const { id } = useParams()
 
-  const getTable = tables.find((table) => table.id === location.id); 
-  const tableTodos = getTable ? getTable.todos : []; 
-  const todosInTable = todos.filter((todo) => todo.table === id ); 
+  const getTable = tables.find((table) => table.id === location.id);
+  const tableTodos = getTable ? getTable.todos : [];
+  const todosInTable = todos.filter((todo) => todo.table === id);
 
   return (
     <NavbarLayout>
@@ -62,16 +62,19 @@ export const TodoPages = () => {
                     startDeleteTodo={startDeleteTodo}
                     startSetActiveTodo={startSetActiveTodo}
                     toggleModalEdit={toggleModalEdit}
-
+                    user={user.role}
                   />
                 ))
               }
             </ul>
-            <AddTarjetCreate
-              status="start"
-              startSaveTodos={startSaveTodos}
-              getTable={getTable?.id}
-            />
+            {
+              user.role !== "readOnly" &&
+              <AddTarjetCreate
+                status="start"
+                startSaveTodos={startSaveTodos}
+                getTable={getTable?.id}
+              />
+            }
           </div>
 
           <div className="todo">
@@ -86,16 +89,20 @@ export const TodoPages = () => {
                     startDeleteTodo={startDeleteTodo}
                     startSetActiveTodo={startSetActiveTodo}
                     toggleModalEdit={toggleModalEdit}
+                    user={user.role}
                   />
 
                 ))
               }
             </ul>
-            <AddTarjetCreate
-              status="progress"
-              startSaveTodos={startSaveTodos}
-              getTable={getTable?.id}
-            />
+            {
+              user.role !== "readOnly" &&
+              <AddTarjetCreate
+                status="progress"
+                startSaveTodos={startSaveTodos}
+                getTable={getTable?.id}
+              />
+            }
           </div>
 
           <div className="todo">
@@ -109,15 +116,19 @@ export const TodoPages = () => {
                     startDeleteTodo={startDeleteTodo}
                     startSetActiveTodo={startSetActiveTodo}
                     toggleModalEdit={toggleModalEdit}
+                    user={user.role}
                   />
                 ))
               }
             </ul>
-            <AddTarjetCreate
-              status="done"
-              startSaveTodos={startSaveTodos}
-              getTable={getTable?.id}
-            />
+            {
+              user.role !== "readOnly" &&
+              <AddTarjetCreate
+                status="done"
+                startSaveTodos={startSaveTodos}
+                getTable={getTable?.id}
+              />
+            }
           </div>
 
         </div>

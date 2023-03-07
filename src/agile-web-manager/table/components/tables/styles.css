@@ -40,12 +40,22 @@
     position: absolute;
     top: -5px;
     right: -5px;
-    height: 25px;
+    height: 20px;
+    border-radius: 0 5px 5px 0;
     background-color: var(--white);
-    border-radius: 50%;
     box-shadow: 0 0 5px var(--primary-color);
 }
 
 .create-table__item__p {
     height: 100%;
+}
+
+.create-table__edit {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    background-color: var(--white);
+    box-shadow: -3px 0 3px var(--primary-color);
 }
