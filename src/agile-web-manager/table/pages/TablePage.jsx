@@ -4,6 +4,7 @@ import { useTableStore } from '../../../hooks/useTableStore';
 import { NavbarLayout } from '../../layout/NavbarLayout';
 import { CreateTableModal } from '../components/modal-create/CreateTableModal';
 import { DeleteTableModal } from '../components/modal-delete/DeleteTableModal';
+import { EditTableModal } from '../components/modal-edit/EditTableModal';
 import { Tables } from '../components/tables/Tables';
 
 import './style.css';
@@ -11,18 +12,26 @@ import './style.css';
 export const TablePage = () => {
 
   const [showModal, setShowModal] = useState(false);
-  const [showModalDelete, setShowModalDelete] = useState(false);
-  const [idDelete, setIdDelete] = useState(null);
+  const [showModalEdit, setShowModalEdit] = useState(false)
 
-  const { startGetTables, user, tables, startCreateTable, startDeleteTable } = useTableStore();
+
+  const {
+    startCreateTable,
+    startDeleteTable,
+    startGetTables,
+    startSetActiveTable,
+    startUpdatedTable,
+    tables,
+    user,
+    tableActive,
+  } = useTableStore();
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const toggleModalDelete = (tableId) => {
-    setIdDelete(tableId);
-    setShowModalDelete(!showModalDelete);
+  const toggleModalEdit = () => {
+    setShowModalEdit(!showModalEdit);
   };
 
 
@@ -54,9 +63,11 @@ export const TablePage = () => {
             tables.map(table => (
               <Tables
                 key={table.id}
-                toggleModalDelete={toggleModalDelete}
                 user={user}
-                {...table}
+                table={table}
+                toggleModalEdit={toggleModalEdit}
+                startDeleteTable={startDeleteTable}
+                startSetActiveTable={startSetActiveTable}
               />
             ))
           }
@@ -73,11 +84,11 @@ export const TablePage = () => {
         }
 
         {
-          showModalDelete && (
-            <DeleteTableModal
-              toggleModalDelete={toggleModalDelete}
-              idDelete={idDelete}
-              startDeleteTable={startDeleteTable}
+          showModalEdit && (
+            <EditTableModal
+              tableActive={tableActive}
+              startUpdatedTable={startUpdatedTable}
+              toggleModalEdit={toggleModalEdit}
             />
           )
         }
