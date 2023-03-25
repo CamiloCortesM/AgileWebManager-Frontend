@@ -1,7 +1,7 @@
 import { DeleteTodo } from '../index';
 import '../style.css'
 
-export const InProgress = ({ name, status, comments, id, desc, user, startDeleteTodo, startSetActiveTodo, toggleModalEdit }) => {
+export const InProgress = ({ name, status, comments, id, desc, user, startDeleteTodo, startSetActiveTodo, toggleModalEdit,handleModal }) => {
 
   const handleGetInfoTodo = () => {
     toggleModalEdit(true);
@@ -24,6 +24,7 @@ export const InProgress = ({ name, status, comments, id, desc, user, startDelete
               src="/public/icons/text.svg"
               className="todo__tarjet__text"
               alt="text.svg"
+              onClick={handleModal}
             ></img>
             <div className="todo__tarjet__comments">
               <img
