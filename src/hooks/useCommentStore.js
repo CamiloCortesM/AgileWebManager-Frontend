@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import agileWebApi from "../api/agileWebApi";
+import { onDeleteCommentTodo } from "../store";
 import {
   onAddNewComments,
   onDeleteComment,
@@ -8,8 +9,9 @@ import {
 } from "../store/comment/commentSlice";
 
 export const useCommentStore = () => {
-  const { comments, errorMessage } = useSelector((state) => state.comment);
+  const { comments } = useSelector((state) => state.comment);
   const { user } = useSelector((state) => state.auth);
+  const { todoActive } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
   const startLoadComments = (comments) => {
@@ -40,6 +42,7 @@ export const useCommentStore = () => {
     try {
       await agileWebApi.delete(`comments/${id}`);
       dispatch(onDeleteComment(id));
+      dispatch(onDeleteCommentTodo({ todoId: todoActive.id, commentId: id }));
     } catch (error) {
       console.log(error);
     }
