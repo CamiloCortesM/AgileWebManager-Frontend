@@ -15,17 +15,21 @@ export const useCommentStore = () => {
   const startLoadComments = (comments) => {
     dispatch(onLoadComments(comments));
   };
-  const startSaveComment = async ({ comment, tableId }) => {
+  const startSaveComment = async ({ comment, todoId }) => {
     try {
       const { data } = await agileWebApi.post("comments", {
         creatorId: user.uid,
         comment,
-        tableId,
+        todoId,
       });
       data.comment.creator = {
         _id: user.uid,
         name: user.name,
       };
+
+      data.comment._id = data.comment.id;
+
+      delete data.comment.id;
       dispatch(onAddNewComments(data));
     } catch (error) {
       console.log(error);
