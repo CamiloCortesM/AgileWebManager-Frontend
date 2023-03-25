@@ -14,6 +14,10 @@ export const todoSlice = createSlice({
     onAddNewTodos: (state, { payload }) => {
       state.todos.push(payload.todo);
     },
+    onAddNewCommmentTodo: (state, { payload }) => {
+        const index = state.todos.findIndex((todo) => todo.id === payload.todoId);
+        state.todos[index].comments.push(payload.comment);
+      },
     onDeleteTodo: (state, { payload }) => {
       const index = state.todos.findIndex((todo) => todo.id === payload);
       if (index !== -1) {
@@ -53,4 +57,5 @@ export const {
   updateTodo,
   onSetActiveTodo,
   onDeleteCommentTodo,
+  onAddNewCommmentTodo,
 } = todoSlice.actions;

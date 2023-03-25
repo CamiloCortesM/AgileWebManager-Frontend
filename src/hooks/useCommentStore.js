@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import agileWebApi from "../api/agileWebApi";
-import { onDeleteCommentTodo } from "../store";
+import { onAddNewCommmentTodo, onDeleteCommentTodo } from "../store";
 import {
   onAddNewComments,
   onDeleteComment,
@@ -33,6 +33,7 @@ export const useCommentStore = () => {
 
       delete data.comment.id;
       dispatch(onAddNewComments(data));
+      dispatch(onAddNewCommmentTodo({ todoId: todoId, comment: data }));
     } catch (error) {
       console.log(error);
     }
