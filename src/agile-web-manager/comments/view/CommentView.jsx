@@ -7,12 +7,12 @@ import { useForm } from "../../../hooks/useForm";
 import { useTodoStore } from "../../../hooks/useTodoStore";
 import "./styles.css";
 
-const createFields = {
+let createFields = {
   comment: "",
 };
 
 export const CommentView = ({ show, handleModal }) => {
-  const { onInputChange, comment } = useForm(createFields);
+  const { onInputChange, comment, onResetForm } = useForm(createFields);
 
   const { todoActive } = useTodoStore();
   const { comments, startSaveComment, startLogoutComment, startDeleteComment } =
@@ -22,12 +22,14 @@ export const CommentView = ({ show, handleModal }) => {
   const closeModal = () => {
     handleModal();
     startLogoutComment();
+    onResetForm();
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     startSaveComment({ comment, todoId: todoActive.id });
     Swal.fire("Good job!", "Comment Created", "success");
+    onResetForm();
   };
 
   const DeleteComment = (id) => {

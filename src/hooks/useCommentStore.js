@@ -33,7 +33,7 @@ export const useCommentStore = () => {
 
       delete data.comment.id;
       dispatch(onAddNewComments(data));
-      dispatch(onAddNewCommmentTodo({ todoId: todoId, comment: data }));
+      dispatch(onAddNewCommmentTodo({ todoId: todoId, comment: data.comment }));
     } catch (error) {
       console.log(error);
     }
