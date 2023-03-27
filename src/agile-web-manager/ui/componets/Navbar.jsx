@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { getLetter } from "../../../helpers/getLetter";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import "./style.css";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { getLetter } from '../../../helpers/getLetter';
+import { useAuthStore } from '../../../hooks/useAuthStore';
+import './style.css';
 
 export const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -36,8 +36,7 @@ export const Navbar = () => {
         </button>
 
         <div
-          className={`navbar__menu ${isActive ? "navbar__menu--on" : "navbar__menu--off"
-            }`}
+          className={`navbar__menu ${isActive ? "navbar__menu--on" : "navbar__menu--off"}`}
         >
           <p className="navbar__menu__p">Account</p>
           <div className="navbar__menu__list info">
