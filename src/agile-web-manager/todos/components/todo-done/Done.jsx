@@ -34,7 +34,7 @@ export const Done = ({
     <>
       { (status == "done") && (
         <li className="todo__tarjet">
-          <span onClick={user !== "readOnly" && handleGetInfoTodo}>
+          <span onClick={ (user !== "readOnly") && handleGetInfoTodo}>
             <h3 className="todo__tarjet__subtitle">{name}</h3>
           </span>
           <div className="todo__tarjet__icons">
