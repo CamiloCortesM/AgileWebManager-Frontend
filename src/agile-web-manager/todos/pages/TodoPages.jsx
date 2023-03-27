@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { useTableStore } from '../../../hooks/useTableStore';
 import { useTodoStore } from '../../../hooks/useTodoStore';
 import { NavbarLayout } from '../../layout/NavbarLayout';
-import { AddTarjetCreate } from '../components/add-tarjet/AddTarjetCreate';
-import { ModalTodo } from '../components/modal-todo/ModalTodo';
-import { Done, InProgress, NotStarted } from '../index';
+import { Done, InProgress, NotStarted , AddTarjetCreate, ModalTodo} from '../index';
 
 import './style.css';
 
@@ -27,6 +26,11 @@ export const TodoPages = () => {
   const location = useParams();
   const [showModalEditTodo, setShowModalEditTodo] = useState(false);
 
+  // React.Memo for the components
+  const NotStartedMemo = React.memo( NotStarted );
+  const InProgressMemo = React.memo( InProgress );
+  const DoneMemo       = React.memo( Done );
+
 
   useEffect(() => {
     startGetTables();
@@ -37,32 +41,34 @@ export const TodoPages = () => {
   const toggleModalEdit = () => {
     setShowModalEditTodo(!showModalEditTodo);
   };
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const getTable = tables.find((table) => table.id === location.id);
-  const tableTodos = getTable ? getTable.todos : [];
+  // Get todos from table id
+  const getTable     = tables.find((table) => table.id === location.id);
   const todosInTable = todos.filter((todo) => todo.table === id);
+
 
   return (
     <NavbarLayout>
 
-      <div className="todo-pages">
-        <h2 className="todo-pages__title">{getTable?.name}</h2>
-        <p className="todo-pages__title">{getTable?.desc}</p>
-        <div className="todo-pages__container">
+      <div className  = "todo-pages">
+        <h2 className = "todo-pages__title">{getTable?.name}</h2>
+        <p className  = "todo-pages__title">{getTable?.desc}</p>
 
-          <div className="todo" >
-            <h2 className="todo__title">Not Started</h2>
+        <div className = "todo-pages__container">
+
+          <div className = "todo" >
+            <h2 className = "todo__title">Not Started</h2>
             <ul className="todo__tarjet__container">
               {
                 todosInTable.map(todo => (
-                  <NotStarted
-                    key={todo.id}
-                    {...todo}
-                    startDeleteTodo={startDeleteTodo}
-                    startSetActiveTodo={startSetActiveTodo}
-                    toggleModalEdit={toggleModalEdit}
-                    user={user.role}
+                  <NotStartedMemo
+                  {...todo}
+                    key  = {todo.id}
+                    user = {user.role}
+                    startDeleteTodo    = {startDeleteTodo}
+                    startSetActiveTodo = {startSetActiveTodo}
+                    toggleModalEdit    = {toggleModalEdit}
                   />
                 ))
               }
@@ -70,9 +76,9 @@ export const TodoPages = () => {
             {
               user.role !== "readOnly" &&
               <AddTarjetCreate
-                status="start"
-                startSaveTodos={startSaveTodos}
-                getTable={getTable?.id}
+                status   = "start"
+                getTable = {getTable?.id}
+                startSaveTodos = {startSaveTodos}
               />
             }
           </div>
@@ -83,13 +89,13 @@ export const TodoPages = () => {
 
               {
                 todosInTable.map(todo => (
-                  <InProgress
-                    key={todo.id}
+                  <InProgressMemo
+                    key  = {todo.id}
+                    user = {user.role}
+                    startDeleteTodo    = {startDeleteTodo}
+                    startSetActiveTodo = {startSetActiveTodo}
+                    toggleModalEdit    = {toggleModalEdit}
                     {...todo}
-                    startDeleteTodo={startDeleteTodo}
-                    startSetActiveTodo={startSetActiveTodo}
-                    toggleModalEdit={toggleModalEdit}
-                    user={user.role}
                   />
 
                 ))
@@ -98,9 +104,9 @@ export const TodoPages = () => {
             {
               user.role !== "readOnly" &&
               <AddTarjetCreate
-                status="progress"
-                startSaveTodos={startSaveTodos}
-                getTable={getTable?.id}
+                status   = "progress"
+                getTable = {getTable?.id}
+                startSaveTodos = {startSaveTodos}
               />
             }
           </div>
@@ -110,13 +116,13 @@ export const TodoPages = () => {
             <ul className="todo__tarjet__container">
               {
                 todosInTable.map(todo => (
-                  <Done
-                    key={todo.id}
+                  <DoneMemo
+                    key  = {todo.id}
+                    user = {user.role}
+                    startDeleteTodo    = {startDeleteTodo}
+                    startSetActiveTodo = {startSetActiveTodo}
+                    toggleModalEdit    = {toggleModalEdit}
                     {...todo}
-                    startDeleteTodo={startDeleteTodo}
-                    startSetActiveTodo={startSetActiveTodo}
-                    toggleModalEdit={toggleModalEdit}
-                    user={user.role}
                   />
                 ))
               }
@@ -124,9 +130,9 @@ export const TodoPages = () => {
             {
               user.role !== "readOnly" &&
               <AddTarjetCreate
-                status="done"
-                startSaveTodos={startSaveTodos}
-                getTable={getTable?.id}
+                status   = "done"
+                getTable = {getTable?.id}
+                startSaveTodos = {startSaveTodos}
               />
             }
           </div>
@@ -137,9 +143,9 @@ export const TodoPages = () => {
       {
         showModalEditTodo &&
         <ModalTodo
-          todoActive={todoActive}
-          toggleModalEdit={toggleModalEdit}
-          startUpdateTodo={startUpdateTodo}
+          todoActive      = {todoActive}
+          toggleModalEdit = {toggleModalEdit}
+          startUpdateTodo = {startUpdateTodo}
         />
       }
 
