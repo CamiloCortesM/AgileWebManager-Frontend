@@ -1,6 +1,8 @@
-import { useCommentStore } from "../../../../hooks/useCommentStore";
-import { DeleteTodo } from "../index";
-import "../style.css";
+import { useCommentStore } from '../../../../hooks/useCommentStore';
+import { DeleteTodo } from '../index';
+import PropTypes from 'prop-types';
+
+import '../style.css';
 
 export const Done = ({
   handleModal,
@@ -14,6 +16,7 @@ export const Done = ({
   startSetActiveTodo,
   toggleModalEdit,
 }) => {
+
   const { startLoadComments } = useCommentStore();
   const handleGetInfoTodo = () => {
     toggleModalEdit(true);
@@ -28,9 +31,9 @@ export const Done = ({
 
   return (
     <>
-      {status == "done" && (
+      { (status == "done") && (
         <li className="todo__tarjet">
-          <span onClick={user !== "readOnly" && handleGetInfoTodo}>
+          <span onClick={ (user !== "readOnly") && handleGetInfoTodo}>
             <h3 className="todo__tarjet__subtitle">{name}</h3>
           </span>
           <div className="todo__tarjet__icons">
@@ -49,7 +52,7 @@ export const Done = ({
               {comments.length}
             </div>
             <div className="todo__tarjet__space"></div>
-            {user !== "readOnly" && (
+            { (user !== "readOnly") && (
               <DeleteTodo id={id} startDeleteTodo={startDeleteTodo} />
             )}
           </div>
@@ -57,4 +60,15 @@ export const Done = ({
       )}
     </>
   );
+};
+
+Done.propTypes = {
+  name               : PropTypes.string.isRequired,
+  status             : PropTypes.string.isRequired,
+  user               : PropTypes.string.isRequired,
+  id                 : PropTypes.string.isRequired,
+  desc               : PropTypes.string,
+  startDeleteTodo    : PropTypes.func.isRequired, 
+  startSetActiveTodo : PropTypes.func.isRequired, 
+  toggleModalEdit    : PropTypes.func.isRequired,
 };

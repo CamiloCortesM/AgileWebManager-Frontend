@@ -1,6 +1,8 @@
-import { useEffect } from "react";
-import { useForm } from "../../../../hooks/useForm"
-import './style.css';
+import { useEffect } from 'react';
+import { useForm } from '../../../../hooks/useForm';
+import PropTypes from 'prop-types';
+
+import '../modal-create/style.css';
 
 let initialState = {
     name: "",
@@ -10,7 +12,6 @@ let initialState = {
 export const EditTableModal = ({ tableActive, startUpdatedTable, toggleModalEdit }) => {
 
     const { name, desc, onInputChange, onResetForm } = useForm(initialState);
-
 
     useEffect(() => {
         initialState = {
@@ -27,54 +28,61 @@ export const EditTableModal = ({ tableActive, startUpdatedTable, toggleModalEdit
     };
 
     return (
-        <div className="edit-table-modal">
+        <div className = "table-modal">
 
-            <div className="edit-table-modal__container">
+            <div className = "table-modal__container">
 
-                <div className="edit-table-modal__title">
+                <div className = "table-modal__title">
                     <span
-                        onClick={() => toggleModalEdit(false)}
+                        onClick = {() => toggleModalEdit(false)}
                     >
                         <img
-                            className="edit-table-modal__title__x"
-                            src="public/icons/x.svg" alt="x.svg"
+                            className = "table-modal__title__x"
+                            src       = "public/icons/x.svg" 
+                            alt       = "x.svg"
                         />
                     </span>
-                    <h2 className="edit-table-modal__title__h2">Edit Table</h2>
+                    <h2 className = "table-modal__title__h2">Edit Table</h2>
                 </div>
 
                 <form
-                    className="edit-table-modal__form"
-                    onSubmit={handleModalUpdate}
+                    className = "table-modal__form"
+                    onSubmit  = {handleModalUpdate}
                 >
-                    <h3 className="edit-table-modal__subtitle">Table name</h3>
+                    <h3 className = "table-modal__subtitle">Table name</h3>
                     <input
-                        className="edit-table-modal__input"
-                        placeholder="Table name"
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={onInputChange}
+                        className   = "table-modal__input"
+                        placeholder = "Table name"
+                        type        = "text"
+                        name        = "name"
+                        value       = {name}
+                        onChange    = {onInputChange}
                     />
-                    <h3 className="edit-table-modal__subtitle">Description</h3>
+                    <h3 className = "table-modal__subtitle">Description</h3>
                     <textarea
-                        className="edit-table-modal__input"
-                        placeholder="Description"
-                        type="text"
-                        name="desc"
-                        value={desc}
-                        onChange={onInputChange}
+                        className   = "table-modal__input"
+                        placeholder = "Description"
+                        type        = "text"
+                        name        = "desc"
+                        value       = {desc}
+                        onChange    = {onInputChange}
                     />
 
-                    <div className="edit-table-modal__buttons">
+                    <div className = "table-modal__buttons">
                         <button
-                            className="edit-table-modal__button edit-table-modal__button__close"
-                            onClick={() => toggleModalEdit(false)}
-                            type="button"
+                            className = "table-modal__button table-modal__button__close"
+                            onClick   = {() => toggleModalEdit(false)}
+                            type      = "button"
                         >
-                            Cancel</button>
-                        <button type="submit" className="edit-table-modal__button edit-table-modal__button__create">
-                            Update</button>
+                            Cancel
+                        </button>
+                        
+                        <button 
+                        type      = "submit"
+                        className = "table-modal__button table-modal__button__create"
+                        >
+                            Update
+                        </button>
                     </div>
                 </form>
             </div >
@@ -82,4 +90,10 @@ export const EditTableModal = ({ tableActive, startUpdatedTable, toggleModalEdit
         </div >
 
     )
+}
+
+EditTableModal.propTypes = {
+    tableActive       : PropTypes.object.isRequired,
+    startUpdatedTable : PropTypes.func.isRequired,      
+    toggleModalEdit   : PropTypes.func.isRequired, 
 }

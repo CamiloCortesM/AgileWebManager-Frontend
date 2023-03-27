@@ -1,11 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux';
+
 import agileWebApi from '../api/agileWebApi';
 import { onAddNewTodos, onDeleteTodo, onLoadTodos, onSetActiveTodo, updateTodo } from '../store';
 
 export const useTodoStore = () => {
 
-    const { todos, errorMessage, todoActive } = useSelector((state) => state.todo);
+    const { todos, todoActive } = useSelector((state) => state.todo);
     const { tables } = useSelector((state) => state.table);
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
@@ -51,17 +52,16 @@ export const useTodoStore = () => {
     }
 
     return {
-
         //* Properties
-        todos,
         tables,
         todoActive,
+        todos,
         user,
 
         //* Methods
+        startDeleteTodo,
         startLoadTodos,
         startSaveTodos,
-        startDeleteTodo,
         startSetActiveTodo,
         startUpdateTodo,
     }
