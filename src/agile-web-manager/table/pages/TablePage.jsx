@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTableStore } from '../../../hooks/useTableStore';
 import { NavbarLayout } from '../../layout/NavbarLayout';
-import { CreateTableModal } from '../components/modal-create/CreateTableModal';
-import { DeleteTableModal } from '../components/modal-delete/DeleteTableModal';
-import { EditTableModal } from '../components/modal-edit/EditTableModal';
-import { Tables } from '../components/tables/Tables';
+import { Tables, CreateTableModal, EditTableModal } from '../index';
 
 import './style.css';
 
@@ -34,6 +31,7 @@ export const TablePage = () => {
     setShowModalEdit(!showModalEdit);
   };
 
+  const TablesMemo = React.memo( Tables );
 
   useEffect(() => {
     startGetTables();
@@ -42,57 +40,59 @@ export const TablePage = () => {
 
   return (
     <NavbarLayout>
-      <div className="tables">
-        <h1 className="tables__title">Tables</h1>
 
-        <div className="create-table">
-          {
-            user.role == "admin" &&
-            <div
-              onClick={toggleModal}
-              className="create-table__title create-table__item"
-            >
-              <figure>
-                <img src="public/icons/plus.svg" alt="plus.svg" />
-              </figure>
-              Create Table
-            </div>
-          }
+        <div className="tables">
+          <h1 className="tables__title">Tables</h1>
+
+          <div className="create-table">
+            {
+              user.role == "admin" &&
+              <div
+                onClick={toggleModal}
+                className="create-table__title create-table__item"
+              >
+                <figure>
+                  <img src="public/icons/plus.svg" alt="plus.svg" />
+                </figure>
+                <p>Create Table</p>
+              </div>
+            }
+
+            {
+              tables.map(table => (
+                <TablesMemo
+                  key   = {table.id}
+                  user  = {user}
+                  table = {table}
+                  toggleModalEdit     = {toggleModalEdit}
+                  startDeleteTable    = {startDeleteTable}
+                  startSetActiveTable = {startSetActiveTable}
+                />
+              ))
+            }
+
+          </div>
 
           {
-            tables.map(table => (
-              <Tables
-                key={table.id}
-                user={user}
-                table={table}
-                toggleModalEdit={toggleModalEdit}
-                startDeleteTable={startDeleteTable}
-                startSetActiveTable={startSetActiveTable}
+            showModal && (
+              <CreateTableModal
+                toggleModal      = {toggleModal}
+                startCreateTable = {startCreateTable}
               />
-            ))
+            )
           }
 
+          {
+            showModalEdit && (
+              <EditTableModal
+                tableActive       = {tableActive}
+                startUpdatedTable = {startUpdatedTable}
+                toggleModalEdit   = {toggleModalEdit}
+              />
+            )
+          }
         </div>
 
-        {
-          showModal && (
-            <CreateTableModal
-              toggleModal={toggleModal}
-              startCreateTable={startCreateTable}
-            />
-          )
-        }
-
-        {
-          showModalEdit && (
-            <EditTableModal
-              tableActive={tableActive}
-              startUpdatedTable={startUpdatedTable}
-              toggleModalEdit={toggleModalEdit}
-            />
-          )
-        }
-      </div>
     </NavbarLayout>
   );
 };
