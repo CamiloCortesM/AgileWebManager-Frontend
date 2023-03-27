@@ -1,4 +1,4 @@
-.create-table-modal {
+.table-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,9 +11,8 @@
     z-index: 9999;
 }
 
-.create-table-modal__container {
+.table-modal__container {
     background-color: var(--white);
-    height: 40%;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -22,11 +21,11 @@
     box-shadow: 0 0 5px #808080;
 }
 
-.create-table-modal__form {
+.table-modal__form {
     width: 100%;
 }
 
-.create-table-modal__input {
+.table-modal__input {
     display: flex;
     border: 1px solid var(--secondary-color);
     width: 90%;
@@ -39,28 +38,28 @@
     resize: none;
 }
 
-.create-table-modal__input:focus {
+.table-modal__input:focus {
     outline: none;
     box-shadow: 0 0 5px var(--secondary-color);
     transition: all .3s ease;
 }
 
 
-.create-table-modal__input::-webkit-scrollbar {
+.table-modal__input::-webkit-scrollbar {
     width: 0;
     background-color: transparent;
 }
 
-.create-table-modal__input:focus::-webkit-scrollbar {
+.table-modal__input:focus::-webkit-scrollbar {
     width: 10px;
 }
 
-.create-table-modal__input:focus::-webkit-scrollbar-thumb {
+.table-modal__input:focus::-webkit-scrollbar-thumb {
     background: #666;
     border-radius: 20px;
 }
 
-.create-table-modal__title {
+.table-modal__title {
     font-weight: 400;
     padding: 0 10px;
     background-color: var(--primary-color);
@@ -72,22 +71,22 @@
     position: relative;
 }
 
-.create-table-modal__title__h2 {
+.table-modal__title__h2 {
     font-weight: 400;
 }
 
-.create-table-modal__subtitle {
+.table-modal__subtitle {
     font-weight: 100;
     margin: 10px 10px 0 10px;
 }
 
-.create-table-modal__buttons {
+.table-modal__buttons {
     display: flex;
     justify-content: end;
     margin: 10px 0 15px 0;
 }
 
-.create-table-modal__button {
+.table-modal__button {
     padding: 5px 10px;
     border-radius: 10px;
     border: none;
@@ -95,24 +94,24 @@
     cursor: pointer;
 }
 
-.create-table-modal__button__close:hover {
+.table-modal__button__close:hover {
     box-shadow: 0 0 5px var(--red);
 }
 
-.create-table-modal__button__create:hover {
+.table-modal__button__create:hover {
     box-shadow: 0 0 5px var(--primary-color);
 }
 
-.create-table-modal__button__create {
+.table-modal__button__create {
     margin: 0 20px 0 10px;
     background-color: var(--primary-color);
 }
 
-.create-table-modal__button__close {
+.table-modal__button__close {
     background-color: var(--red);
 }
 
-.create-table-modal__title__x {
+.table-modal__title__x {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -122,13 +121,28 @@
     cursor: pointer;
 }
 
-.create-table-modal__input--invalid {
+.table-modal__input--invalid {
     transition: all .3s;
     border: 1px solid var(--red);
 }
 
-.create-table-modal__input--invalid:focus {
+.table-modal__input--invalid:focus {
     outline: none;
     box-shadow: 0 0 5px var(--red);
     transition: all .3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .table-modal__title {
+        height: 40px;
+    }
+
+    .table-modal__title__h2 {
+        font-size: 1.2rem;
+    }
+
+    .table-modal__subtitle {
+        font-size: 1.1rem;
+    }
 }
