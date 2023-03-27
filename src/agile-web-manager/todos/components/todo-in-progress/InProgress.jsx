@@ -1,68 +1,71 @@
+
+import { useCommentStore } from '../../../../hooks/useCommentStore';
 import { DeleteTodo } from '../index';
 import PropTypes from 'prop-types';
 
-import '../style.css'
+import '../style.css';
 
-export const InProgress = ({ 
-  comments, 
-  desc, 
-  id, 
-  name, 
-  startDeleteTodo, 
-  startSetActiveTodo, 
-  status, 
+export const InProgress = ({
+  name,
+  status,
+  comments,
+  id,
+  desc,
+  user,
+  startDeleteTodo,
+  startSetActiveTodo,
   toggleModalEdit,
-  user, 
+  handleModal,
 }) => {
-
+  const { startLoadComments } = useCommentStore();
   const handleGetInfoTodo = () => {
     toggleModalEdit(true);
     startSetActiveTodo({ name, status, id, desc });
   };
 
+  const openModal = () => {
+    startSetActiveTodo({ name, status, id, desc });
+    startLoadComments(comments);
+    handleModal();
+  };
+
   return (
     <>
-
-      {
-        (status == "progress") &&
-        <li className = "todo__tarjet">
-
-          <span onClick = {user !== "readOnly" && handleGetInfoTodo}>
-            <h3 className = "todo__tarjet__subtitle">{name}</h3>
+      { (status == "progress") && (
+        <li className="todo__tarjet">
+          <span onClick={(user !== "readOnly") && handleGetInfoTodo}>
+            <h3 className="todo__tarjet__subtitle">{name}</h3>
           </span>
 
           <div className = "todo__tarjet__icons">
             <img
-              src       = "/public/icons/text.svg"
-              className = "todo__tarjet__text"
-              alt       = "text.svg"
-            />
-            <div className = "todo__tarjet__comments">
+              src="/public/icons/text.svg"
+              className="todo__tarjet__text"
+              alt="text.svg"
+              onClick={openModal}
+            ></img>
+            <div className="todo__tarjet__comments">
+            
               <img
-                src       = "/public/icons/message.svg"
+                src = "/public/icons/message.svg"
                 className = "todo__tarjet__message"
-                alt       = "message.svg"
+                alt = "message.svg"
               />
               {comments.length}
             </div>
             <div className = "todo__tarjet__space"></div>
 
-            {
-              user !== 'readOnly' &&
-              <DeleteTodo
-                id = {id}
-                startDeleteTodo = {startDeleteTodo}
-              />
-            }
+            { (user !== "readOnly") && (
+              <DeleteTodo id={id} startDeleteTodo={startDeleteTodo} />
+            )}
           </div>
         </li>
-      }
-
+      )}
     </>
-  )
-}
+  );
+};
 
-InProgress.propTypes={
+InProgress.propTypes = {
   desc               : PropTypes.string,
   id                 : PropTypes.string.isRequired,
   name               : PropTypes.string.isRequired,
@@ -71,4 +74,5 @@ InProgress.propTypes={
   status             : PropTypes.string.isRequired,
   toggleModalEdit    : PropTypes.func.isRequired,
   user               : PropTypes.string.isRequired,
-}
+};
+

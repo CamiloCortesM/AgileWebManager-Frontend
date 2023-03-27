@@ -14,7 +14,7 @@
 }
 
 .modal-content {
-  overflow-x: scroll;
+  overflow-y: auto;
   background-color: #fefefe;
   margin: 40px auto;
   padding: 20px;
