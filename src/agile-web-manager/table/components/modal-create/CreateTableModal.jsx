@@ -32,21 +32,19 @@ export const CreateTableModal = ({ toggleModal, startCreateTable }) => {
 
   return (
     <div className = "table-modal">
-
       <div className = "table-modal__container">
-
         <div className = "table-modal__title">
+        
           <span onClick = {handleCloseModal}>
-
             <figure>
                 <img
                     className = "table-modal__title__x"
-                    src       = "public/icons/x.svg" alt="x.svg"
+                    src = "public/icons/x.svg" alt="x.svg"
                 />
             </figure>
-
           </span>
           <h2 className = "table-modal__title__h2">Create Table</h2>
+          
         </div>
 
         <form
@@ -102,10 +100,10 @@ export const CreateTableModal = ({ toggleModal, startCreateTable }) => {
       </div >
 
     </div >
-  )
-}
+  );
+};
 
 CreateTableModal.propTypes = {
   toggleModal      : PropTypes.func.isRequired,
   startCreateTable : PropTypes.func.isRequired,
-}
+};
