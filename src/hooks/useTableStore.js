@@ -17,8 +17,6 @@ export const useTableStore = () => {
 
     const dispatch = useDispatch();
 
-
-
     const startGetTables = async () => {
         try {
             const { data } = await agileWebApi.get("tables");
@@ -61,14 +59,14 @@ export const useTableStore = () => {
 
     return {
         //* Properties
+        tableActive,
         tables,
         user,
-        tableActive,
 
         //* Methods
-        startGetTables,
         startCreateTable,
         startDeleteTable,
+        startGetTables,
         startSetActiveTable,
         startUpdatedTable,
     };
