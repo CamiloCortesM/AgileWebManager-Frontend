@@ -1,4 +1,4 @@
-.tables__title{
+.tables__title {
     margin: 20px 30px 0;
     width: 95%;
     border-bottom: 2px solid #b1afaf;
@@ -10,4 +10,24 @@
     width: 97%;
     margin: 20px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .tables__title {
+        width: 90%;
+    }
+
+    .create-table {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .tables__title {
+        width: 85%;
+    }
+
+    .create-table {
+        width: 85%;
+    }
 }

@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useTableStore } from "../../../hooks/useTableStore";
-import { useTodoStore } from "../../../hooks/useTodoStore";
-import { CommentView } from "../../comments/view/CommentView";
-import { NavbarLayout } from "../../layout/NavbarLayout";
-import { AddTarjetCreate } from "../components/add-tarjet/AddTarjetCreate";
-import { ModalTodo } from "../components/modal-todo/ModalTodo";
-import { Done, InProgress, NotStarted } from "../index";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import "./style.css";
+import { useTableStore } from '../../../hooks/useTableStore';
+import { useTodoStore } from '../../../hooks/useTodoStore';
+import { CommentView } from '../../comments/view/CommentView';
+import { NavbarLayout } from '../../layout/NavbarLayout';
+import { Done, InProgress, NotStarted, AddTarjetCreate, ModalTodo } from '../index';
+
+import './style.css';
 
 export const TodoPages = () => {
   const {
@@ -28,6 +27,11 @@ export const TodoPages = () => {
   const [showModalEditTodo, setShowModalEditTodo] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // React.memo for the components
+  const NotStartedMemo = React.memo( NotStarted );
+  const InProgressMemo = React.memo( InProgress );
+  const DoneMemo       = React.memo( Done );
+
   const handleModal = () => {
     setShowModal(!showModal);
   };
@@ -42,9 +46,10 @@ export const TodoPages = () => {
   };
   const { id } = useParams();
 
+  // Get todos from table id
   const getTable = tables.find((table) => table.id === location.id);
-  const tableTodos = getTable ? getTable.todos : [];
   const todosInTable = todos.filter((todo) => todo.table === id);
+
 
   return (
     <NavbarLayout>
@@ -67,11 +72,11 @@ export const TodoPages = () => {
                 />
               ))}
             </ul>
-            {user.role !== "readOnly" && (
+            { (user.role !== "readOnly") && (
               <AddTarjetCreate
                 status="start"
-                startSaveTodos={startSaveTodos}
                 getTable={getTable?.id}
+                startSaveTodos={startSaveTodos}
               />
             )}
           </div>
@@ -91,11 +96,11 @@ export const TodoPages = () => {
                 />
               ))}
             </ul>
-            {user.role !== "readOnly" && (
+            { (user.role !== "readOnly") && (
               <AddTarjetCreate
                 status="progress"
-                startSaveTodos={startSaveTodos}
                 getTable={getTable?.id}
+                startSaveTodos={startSaveTodos}
               />
             )}
           </div>
@@ -115,17 +120,18 @@ export const TodoPages = () => {
                 />
               ))}
             </ul>
-            {user.role !== "readOnly" && (
+            { (user.role !== "readOnly") && (
               <AddTarjetCreate
                 status="done"
-                startSaveTodos={startSaveTodos}
                 getTable={getTable?.id}
+                startSaveTodos={startSaveTodos}
               />
             )}
           </div>
         </div>
       </div>
-      {showModalEditTodo && (
+      
+      { (showModalEditTodo) && (
         <ModalTodo
           todoActive={todoActive}
           toggleModalEdit={toggleModalEdit}
