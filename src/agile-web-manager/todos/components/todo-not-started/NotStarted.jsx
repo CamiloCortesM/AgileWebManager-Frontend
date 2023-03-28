@@ -63,12 +63,13 @@ export const NotStarted = ({
 };
 
 NotStarted.propTypes = {
-  desc               : PropTypes.string,
-  id                 : PropTypes.string.isRequired,
-  name               : PropTypes.string.isRequired,
-  startDeleteTodo    : PropTypes.func.isRequired,
-  startSetActiveTodo : PropTypes.func.isRequired,
-  status             : PropTypes.string.isRequired,
-  toggleModalEdit    : PropTypes.func.isRequired,
-  user               : PropTypes.string.isRequired,
-}
+    desc               : PropTypes.string,
+    id                 : PropTypes.string.isRequired,
+    name               : PropTypes.string.isRequired,
+    startDeleteTodo    : PropTypes.func.isRequired,
+    startSetActiveTodo : PropTypes.func.isRequired,
+    status             : PropTypes.string.isRequired,
+    toggleModalEdit    : PropTypes.func.isRequired,
+    user               : PropTypes.string.isRequired,
+};
+

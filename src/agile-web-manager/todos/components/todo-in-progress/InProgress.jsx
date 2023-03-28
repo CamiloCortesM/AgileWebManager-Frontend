@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import '../style.css';
 
-
 export const InProgress = ({
   name,
   status,
@@ -18,6 +17,7 @@ export const InProgress = ({
   toggleModalEdit,
   handleModal,
 }) => {
+  
   const { startLoadComments } = useCommentStore();
   
   const handleGetInfoTodo = () => {
@@ -35,7 +35,7 @@ export const InProgress = ({
     <>
       { (status == "progress") && (
         <li className="todo__tarjet">
-          <span onClick={user !== "readOnly" && handleGetInfoTodo}>
+          <span onClick={(user !== "readOnly") && handleGetInfoTodo}>
             <h3 className="todo__tarjet__subtitle">{name}</h3>
           </span>
 
@@ -48,9 +48,9 @@ export const InProgress = ({
             ></img>
             <div className="todo__tarjet__comments">
               <img
-                src       = "/public/icons/message.svg"
+                src = "/public/icons/message.svg"
                 className = "todo__tarjet__message"
-                alt       = "message.svg"
+                alt = "message.svg"
               />
               {comments.length}
             </div>
@@ -66,7 +66,7 @@ export const InProgress = ({
   );
 };
 
-InProgress.propTypes={
+InProgress.propTypes = {
   desc               : PropTypes.string,
   id                 : PropTypes.string.isRequired,
   name               : PropTypes.string.isRequired,
@@ -75,4 +75,4 @@ InProgress.propTypes={
   status             : PropTypes.string.isRequired,
   toggleModalEdit    : PropTypes.func.isRequired,
   user               : PropTypes.string.isRequired,
-}
+};

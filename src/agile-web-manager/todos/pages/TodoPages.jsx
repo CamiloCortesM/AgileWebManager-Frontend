@@ -27,14 +27,14 @@ export const TodoPages = () => {
   const [showModalEditTodo, setShowModalEditTodo] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // React.memo for the components
+  const NotStartedMemo = React.memo( NotStarted );
+  const InProgressMemo = React.memo( InProgress );
+  const DoneMemo       = React.memo( Done );
+
   const handleModal = () => {
     setShowModal(!showModal);
   };
-  // React.Memo for the components
-  const NotStartedMemo = React.memo(NotStarted);
-  const InProgressMemo = React.memo(InProgress);
-  const DoneMemo       = React.memo(Done);
-
 
   useEffect(() => {
     startGetTables();
@@ -130,7 +130,8 @@ export const TodoPages = () => {
           </div>
         </div>
       </div>
-      {showModalEditTodo && (
+      
+      { (showModalEditTodo) && (
         <ModalTodo
           todoActive={todoActive}
           toggleModalEdit={toggleModalEdit}
