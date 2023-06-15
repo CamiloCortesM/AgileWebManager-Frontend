@@ -1,6 +1,8 @@
-import { NavLink, useLocation } from "react-router-dom";
-import { useAuthStore } from "../../hooks/useAuthStore";
-import "./styles.css";
+import { NavLink, useLocation } from 'react-router-dom';
+import { useAuthStore } from '../../hooks/useAuthStore';
+
+import './styles.css';
+
 export const SettingsLayout = ({ children }) => {
   const { user, startLogout } = useAuthStore();
   const { role } = user;
@@ -21,11 +23,11 @@ export const SettingsLayout = ({ children }) => {
             alt="cat"
           />
           <NavLink to="/" className="navlink">
-          <img
-            className="settings__sidebar--icon"
-            src="/public/icons//back-svgrepo-com.svg"
-            alt="back"
-          />
+            <img
+              className="settings__sidebar--icon"
+              src="/public/icons//back-svgrepo-com.svg"
+              alt="back"
+            />
           </NavLink>
         </div>
         <div className="settings__sidebar__nav">
@@ -39,21 +41,21 @@ export const SettingsLayout = ({ children }) => {
               <NavLink to="/settings/profile" className="navlink">
                 <div
                   className={
-                    pathname === "/settings/profile"
-                      ? "settings__sidebar__links--item item__active"
-                      : "settings__sidebar__links--item"
+                    pathname === '/settings/profile'
+                      ? 'settings__sidebar__links--item item__active'
+                      : 'settings__sidebar__links--item'
                   }
                 >
                   <p className="settings__sidebar__links--tittle">Profile</p>
                 </div>
               </NavLink>
-              {role === "admin" && (
+              {role === 'admin' && (
                 <NavLink to="/settings/manage" className="navlink">
                   <div
                     className={
-                      pathname === "/settings/manage"
-                        ? "settings__sidebar__links--item item__active"
-                        : "settings__sidebar__links--item"
+                      pathname === '/settings/manage'
+                        ? 'settings__sidebar__links--item item__active'
+                        : 'settings__sidebar__links--item'
                     }
                   >
                     <p className="settings__sidebar__links--tittle">

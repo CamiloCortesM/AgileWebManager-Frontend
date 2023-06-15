@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { useForm } from "../../../hooks/useForm";
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+
+import { useAuthStore } from '../../../hooks/useAuthStore';
+import { useForm } from '../../../hooks/useForm';
+
+import './styles.css';
+import '../shares-styles/auth-form.css';
+import '../shares-styles/login-password.css';
 
 const passwordFields = {
-  password1: "",
-  password2: "",
+  password1: '',
+  password2: '',
 };
 export const ChangePasswordPage = () => {
-  const { ChangeThePassword ,errorMessage} = useAuthStore();
+  const { ChangeThePassword, errorMessage } = useAuthStore();
   const [viewPassword, setViewPassword] = useState(false);
   const [viewSecondPassword, setViewSecondPassword] = useState(false);
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { password1, password2, onInputChange } = useForm(passwordFields);
 
   const onTogglePasswordVisibility = (index) => {
@@ -38,19 +43,19 @@ export const ChangePasswordPage = () => {
         regexNumber.test(password1) &&
         regexSpecial.test(password1)
       ) {
-        setError("");
-        ChangeThePassword({password:password1});
+        setError('');
+        ChangeThePassword({ password: password1 });
       } else {
-        Swal.fire("erorr in password", "the password is not secure", "error")
+        Swal.fire('erorr in password', 'the password is not secure', 'error');
       }
     } else {
-      Swal.fire("erorr in password", "Passwords are not the same", "error")
+      Swal.fire('erorr in password', 'Passwords are not the same', 'error');
     }
   };
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire("authentication failed", errorMessage, "error");
+      Swal.fire('authentication failed', errorMessage, 'error');
     }
   }, [errorMessage]);
   return (
@@ -70,13 +75,13 @@ export const ChangePasswordPage = () => {
           <div
             className={
               !error
-                ? "change_password__body__password change_password__input"
-                : "change_password__body__password change_password__input input-error"
+                ? 'change_password__body__password change_password__input'
+                : 'change_password__body__password change_password__input input-error'
             }
           >
             <input
               placeholder="Password"
-              type={viewPassword ? "text" : "password"}
+              type={viewPassword ? 'text' : 'password'}
               name="password1"
               value={password1}
               onChange={onInputChange}
@@ -87,8 +92,8 @@ export const ChangePasswordPage = () => {
               className="change_password_body__icon--eye"
               src={
                 viewPassword
-                  ? "/public/icons/eye-svgrepo-com.svg"
-                  : "/public/icons/eye-off-svgrepo-com.svg"
+                  ? '/public/icons/eye-svgrepo-com.svg'
+                  : '/public/icons/eye-off-svgrepo-com.svg'
               }
               alt="eye-icon"
             />
@@ -96,12 +101,12 @@ export const ChangePasswordPage = () => {
           <div
             className={
               !error
-                ? "change_password__body__password change_password__input"
-                : "change_password__body__password change_password__input input-error"
+                ? 'change_password__body__password change_password__input'
+                : 'change_password__body__password change_password__input input-error'
             }
           >
             <input
-              type={viewSecondPassword ? "text" : "password"}
+              type={viewSecondPassword ? 'text' : 'password'}
               placeholder="Repeat Password"
               name="password2"
               value={password2}
@@ -113,15 +118,15 @@ export const ChangePasswordPage = () => {
               className="change_password_body__icon--eye"
               src={
                 viewSecondPassword
-                  ? "/public/icons/eye-svgrepo-com.svg"
-                  : "/public/icons/eye-off-svgrepo-com.svg"
+                  ? '/public/icons/eye-svgrepo-com.svg'
+                  : '/public/icons/eye-off-svgrepo-com.svg'
               }
               alt="eye-icon"
             />
           </div>
           <div className="change_password__footer">
             <button
-              className="change_password__footer__botton botton"
+              className="change_password__footer__button button"
               type="submit"
             >
               Submit

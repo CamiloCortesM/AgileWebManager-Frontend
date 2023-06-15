@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import { useUserStore } from "../../hooks/useUserStore";
-import "./styles.css";
+
+import '../shares-styles/modal.css';
 
 let createFields = {
   name: "",

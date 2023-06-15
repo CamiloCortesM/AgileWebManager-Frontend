@@ -3,7 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthRoutes } from './public/AuthRoutes';
 import { AuthenticateRoutes } from './private/AuthenticateRoutes';
+
 import { useAuthStore } from '../hooks/useAuthStore';
+
+import './styles.css';
 
 export const AppRouter = () => {
   const { state, checkAuthToken } = useAuthStore();

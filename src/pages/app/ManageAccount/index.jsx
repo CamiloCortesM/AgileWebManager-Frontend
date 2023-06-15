@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useUserStore } from "../../../hooks/useUserStore";
-import { Modal, ModalUpdate } from "../../../components/Modal";
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
-import { SettingsLayout } from "../../../layouts/Settings";
+import { useUserStore } from '../../../hooks/useUserStore';
+
+import { SettingsLayout } from '../../../layouts/Settings';
+
+import { Modal } from '../../../components/Modal';
+import { ModalUpdate } from '../../../components/ModalUpdate';
+
+import './styles.css';
 
 export const ManageAccount = () => {
   const {
@@ -37,13 +42,13 @@ export const ManageAccount = () => {
 
   const onDelete = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         startDeleteUser({ id });

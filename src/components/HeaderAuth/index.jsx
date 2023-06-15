@@ -1,5 +1,7 @@
-import { getPhone } from "../../helpers/getPhone";
-import { useAuthStore } from "../../hooks/useAuthStore";
+import { getPhone } from '../../helpers/getPhone';
+import { useAuthStore } from '../../hooks/useAuthStore';
+
+import './styles.css';
 
 export const HeaderAuth = () => {
   const { user } = useAuthStore();

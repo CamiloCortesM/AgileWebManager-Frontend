@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { getLetter } from '../../helpers/getLetter';
+
 import { useAuthStore } from '../../hooks/useAuthStore';
+
 import './style.css';
 
 export const Navbar = () => {

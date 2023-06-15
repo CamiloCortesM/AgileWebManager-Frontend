@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 import { useTableStore } from '../../../hooks/useTableStore';
 import { useTodoStore } from '../../../hooks/useTodoStore';
-import { CommentView } from '../../comments/view/CommentView';
-import { NavbarLayout } from '../../layout/NavbarLayout';
-import {
-  Done,
-  InProgress,
-  NotStarted,
-  AddTarjetCreate,
-  ModalTodo,
-} from '../index';
+
+import { NotStarted } from '../../../components/TodoNotStarted';
+import { InProgress } from '../../../components/TodoInProgress';
+import { Done } from '../../../components/TodoDone';
+import { AddTarjetCreate } from '../../../components/AddTarjet';
+import { ModalTodo } from '../../../components/ModalTodo';
+import { CommentView } from '../../../views/Comments';
+
+import { NavbarLayout } from '../../../layouts/Navbar';
 
 import './style.css';
-
 export const TodoPages = () => {
   const {
     tables,
@@ -34,9 +34,9 @@ export const TodoPages = () => {
   const [showModal, setShowModal] = useState(false);
 
   // React.memo for the components
-  const NotStartedMemo = React.memo(NotStarted);
-  const InProgressMemo = React.memo(InProgress);
-  const DoneMemo = React.memo(Done);
+  const NotStartedMemo = memo(NotStarted);
+  const InProgressMemo = memo(InProgress);
+  const DoneMemo = memo(Done);
 
   const handleModal = () => {
     setShowModal(!showModal);

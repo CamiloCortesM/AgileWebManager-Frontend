@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useAuthStore } from "../../../hooks/useAuthStore";
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+
+import { useAuthStore } from '../../../hooks/useAuthStore';
+
+import './styles.css';
+import '../shares-styles/auth-form.css';
 
 export const SendNumberPage = () => {
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState('');
 
   const { startSendNumber, errorMessage } = useAuthStore();
 
@@ -17,13 +21,13 @@ export const SendNumberPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const numberPhone = "+57" + number;
+    const numberPhone = '+57' + number;
     startSendNumber({ phone: numberPhone });
   };
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire("Error in the phone number", errorMessage, "error");
+      Swal.fire('Error in the phone number', errorMessage, 'error');
     }
   }, [errorMessage]);
   return (
@@ -68,7 +72,7 @@ export const SendNumberPage = () => {
               />
             </div>
             <div className="number__footer">
-              <button className="number__footer__botton botton" type="submit">
+              <button className="number__footer__button button" type="submit">
                 Send
               </button>
             </div>
