@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import agileWebApi from '../api/agileWebApi';
+import agileWebApi from '../api/config';
+
 import { onLogoutUsers } from '../store/users/usersSlice';
 import {
   clearErrorMessage,
@@ -32,7 +33,7 @@ export const useAuthStore = () => {
       );
     } catch (error) {
       const { data } = error.response;
-      dispatch(onLogout(data.msg));
+      dispatch(onLogout(data.msg || data.errors[0].msg));
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -67,6 +68,7 @@ export const useAuthStore = () => {
       const { data } = await agileWebApi.get('auth/renew');
       const { user, token } = data;
       localStorage.setItem('token', token);
+      console.log(data);
       dispatch(
         onLogin({
           name: user.name,
