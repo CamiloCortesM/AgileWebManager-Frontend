@@ -1,37 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
-import agileWebApi from "../api/agileWebApi";
+import { useDispatch, useSelector } from 'react-redux';
+
+import agileWebApi from '../api/agileWebApi';
+import { onLogoutUsers } from '../store/users/usersSlice';
 import {
   clearErrorMessage,
   onChecking,
-  onCreate,
   onError,
   onLogin,
   onLogout,
-  onUpdate,
   onVerify,
-} from "../store";
-import { onLogoutUsers } from "../store/users/usersSlice";
+} from '../store';
 
 export const useAuthStore = () => {
   const { state, user, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const startLogin = async ({ email, password }) => {
-    // dispatch(onChecking());
+    dispatch(onChecking());
     try {
-      const { data } = await agileWebApi.post("/auth", { email, password });
-      if (data.phone) {
-        await agileWebApi.post("/auth/send", {
-          phone: data.phone,
-        });
-      }
+      const { data } = await agileWebApi.post('/auth', { email, password });
+      const { user } = data;
       dispatch(
         onLogin({
-          name: data.name,
-          uid: data.uid,
-          status: data.status,
-          role: data.role,
-          phone: data.phone,
+          name: user.name,
+          uid: user.uid,
+          status: user.status,
+          role: user.role,
+          phone: user.phone,
           email,
         })
       );
@@ -44,52 +39,20 @@ export const useAuthStore = () => {
     }
   };
 
-  const startSendNumber = async ({ phone }) => {
-    try {
-      if (!user?.uid) {
-        throw new Error("User not authenticated");
-      }
-      await agileWebApi.post("/auth/send", { phone });
-      await agileWebApi.put(`auth/${user?.uid}`, {
-        phone,
-      });
-      dispatch(
-        onUpdate({
-          phone,
-        })
-      );
-    } catch (error) {
-      const { data } = error.response;
-      dispatch(onError(data?.msg || "Invalid number"));
-      setTimeout(() => {
-        dispatch(clearErrorMessage());
-      }, 10);
-    }
-  };
-
   const startAuthenticationNumber = async ({ code }) => {
+    dispatch(onChecking());
     try {
-      const { data } = await agileWebApi.post("auth/verify", {
+      const { data } = await agileWebApi.post('auth/verify', {
         phone: user.phone,
         code,
       });
-      if (data.ok && user.status === "new") {
-        dispatch(onCreate());
-      } else if (data.ok) {
-        const { data } = await agileWebApi.post("auth/token", {
-          id: user.uid,
-          name: user.name,
-          status: user.status,
-          role: user.role,
-          phone: user.phone,
-          email: user.email,
-        });
-        localStorage.setItem("token", data.token);
+      if (data.ok) {
+        localStorage.setItem('token', data.token);
         dispatch(onVerify());
       }
     } catch (error) {
       const { data } = error.response;
-      dispatch(onError(data?.msg || "invalid verification code"));
+      dispatch(onError(data?.msg || 'Invalid verification code'));
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -97,20 +60,21 @@ export const useAuthStore = () => {
   };
 
   const checkAuthToken = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (!token) return dispatch(onLogout());
 
     try {
-      const { data } = await agileWebApi.get("auth/renew");
-      localStorage.setItem("token", data.token);
+      const { data } = await agileWebApi.get('auth/renew');
+      const { user, token } = data;
+      localStorage.setItem('token', token);
       dispatch(
         onLogin({
-          name: data.name,
-          uid: data.uid,
-          status: data.status,
-          role: data.role,
-          phone: data.phone,
-          email: data.email,
+          name: user.name,
+          uid: user.uid,
+          status: user.status,
+          role: user.role,
+          phone: user.phone,
+          email: user.email,
         })
       );
       dispatch(onVerify());
@@ -120,32 +84,21 @@ export const useAuthStore = () => {
     }
   };
 
-  const ChangeThePassword = async ({ password }) => {
+  const startSendNumber = async ({ phone }) => {
+    dispatch(onChecking());
     try {
       if (!user?.uid) {
-        throw new Error("User not authenticated");
+        throw new Error('User not authenticated');
       }
-      await agileWebApi.put(`auth/${user?.uid}`, {
-        password,
-      });
+      await agileWebApi.post('/auth/number', { phone, uid: user.uid });
       dispatch(
         onUpdate({
-          status: "member",
+          phone,
         })
       );
-      const { data } = await agileWebApi.post("auth/token", {
-        id: user.uid,
-        name: user.name,
-        status: user.status,
-        role: user.role,
-        phone: user.phone,
-        email: user.email,
-      });
-      localStorage.setItem("token", data.token);
-      dispatch(onVerify());
     } catch (error) {
       const { data } = error.response;
-      dispatch(onError(data?.msg || "the password cannot be the same"));
+      dispatch(onError(data?.msg || 'Invalid number'));
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -160,16 +113,15 @@ export const useAuthStore = () => {
 
   return {
     //* Properties
+    errorMessage,
     state,
     user,
-    errorMessage,
 
     //* Methods
-    startLogin,
-    startSendNumber,
-    startAuthenticationNumber,
     checkAuthToken,
-    ChangeThePassword,
+    startAuthenticationNumber,
+    startLogin,
     startLogout,
+    startSendNumber,
   };
 };
