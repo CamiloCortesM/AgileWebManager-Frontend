@@ -9,7 +9,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal.show {
+.show {
   display: block;
 }
 
@@ -71,9 +71,9 @@
   box-sizing: border-box;
 }
 
-.modal--input:disabled{
-    background-color: gray;
-    color: #ccc;
+.modal--input:disabled {
+  background-color: gray;
+  color: #ccc;
 }
 
 .modal--input:hover {

@@ -1,8 +1,9 @@
 import { useCommentStore } from '../../hooks/useCommentStore';
-import { DeleteTodo } from '../TodoNotStarted/index';
+import { DeleteTodo } from '../DeleteTodo';
+
 import PropTypes from 'prop-types';
 
-import '../style.css';
+import '../shares-styles/todos.css';
 
 export const Done = ({
   handleModal,

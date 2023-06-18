@@ -7,8 +7,6 @@ import { SendNumberPage } from "../../pages/auth/SendNumber";
 import { AuthPage } from "../../pages/auth/Auth";
 import { ChangePasswordPage } from "../../pages/auth/ChangePassword";
 
-
-
 export const AuthRoutes = () => {
   const { state, user } = useAuthStore();
   const { phone } = user;

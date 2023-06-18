@@ -1,16 +1,18 @@
-import { useForm } from "../../hooks/useForm";
-import { useUserStore } from "../../hooks/useUserStore";
-import "./styles.css";
+import { useForm } from '../../hooks/useForm';
+import { useUserStore } from '../../hooks/useUserStore';
+
+import '../shares-styles/modal.css';
 
 const createFields = {
-  name: "",
-  email: "",
-  password: "",
-  role: "",
+  name: '',
+  email: '',
+  password: '',
+  role: '',
 };
 
 export const Modal = ({ show, handleModal }) => {
-  const { onInputChange, name, email, password, role, onResetForm } = useForm(createFields);
+  const { onInputChange, name, email, password, role, onResetForm } =
+    useForm(createFields);
   const { startCreateUser } = useUserStore();
 
   const onSubmit = (e) => {
@@ -20,7 +22,7 @@ export const Modal = ({ show, handleModal }) => {
     onResetForm();
   };
   return (
-    <div className={`modal ${show ? "show" : ""}`} onClick={handleModal}>
+    <div className={`modal ${show ? 'show' : ''}`} onClick={handleModal}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-button" onClick={handleModal}>
           X
@@ -101,5 +103,3 @@ export const Modal = ({ show, handleModal }) => {
     </div>
   );
 };
-
-

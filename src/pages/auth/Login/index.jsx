@@ -1,12 +1,16 @@
-import { useEffect } from "react";
-import Swal from "sweetalert2";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { useForm } from "../../../hooks/useForm";
-import "./styles.css";
+import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+
+import { useAuthStore } from '../../../hooks/useAuthStore';
+import { useForm } from '../../../hooks/useForm';
+
+import './styles.css';
+import '../shares-styles/auth-form.css';
+import '../shares-styles/login-password.css';
 
 const loginformfield = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 export const LoginPage = () => {
@@ -20,7 +24,7 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire("Error logging in", errorMessage, "error");
+      Swal.fire('Error logging in', errorMessage, 'error');
     }
   }, [errorMessage]);
 
@@ -65,7 +69,7 @@ export const LoginPage = () => {
             />
           </div>
           <div className="login__footer">
-            <button type="submit" className="login__footer__botton botton">
+            <button type="submit" className="login__footer__button button">
               Login
             </button>
           </div>

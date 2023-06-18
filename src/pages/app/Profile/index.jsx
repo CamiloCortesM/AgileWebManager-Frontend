@@ -1,6 +1,9 @@
 import { getLetter } from '../../../helpers/getLetter';
+
 import { useAuthStore } from '../../../hooks/useAuthStore';
+
 import { SettingsLayout } from '../../../layouts/Settings';
+
 import './style.css';
 
 export const Profile = () => {

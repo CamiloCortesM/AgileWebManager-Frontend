@@ -1,0 +1,12 @@
+.icon__team {
+  bottom: 10px;
+  height: 250px;
+  left: 30px;
+  position: absolute;
+}
+.icon__cat {
+  bottom: 0;
+  height: 90px;
+  position: absolute;
+  right: 10px;
+}

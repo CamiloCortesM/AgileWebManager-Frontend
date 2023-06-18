@@ -1,0 +1,84 @@
+.manage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 98%;
+  }
+  
+  .manage__title {
+    border-bottom: 1px solid black;
+    color: var(--primary-color);
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .manage--title {
+    font-size: 1.6rem;
+    margin: 4px;
+  }
+  
+  .manage__container {
+    margin: 10px;
+    padding: 0 30px;
+    width: 100%;
+    }
+  
+  .button--create {
+    background-color: rgb(2, 176, 2);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px 20px;
+    text-transform: uppercase;
+  }
+  
+  .button--create:hover {
+    background-color: rgba(2, 176, 2, 0.815);
+  }
+  
+  .table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .table__header,
+  .table__cell {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table__header {
+    background-color: var(--red);
+    color: white;
+  }
+  
+  .table__cell:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .table__cell .button {
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 8px 15px;
+  }
+  
+  .button--delete {
+    background-color: #dc3545;
+  }
+  
+  .button--edit {
+    background-color: slateblue;
+  }
+  
+  .table-cell-buttons {
+    min-width: 160px;
+    padding: 8px;
+  }

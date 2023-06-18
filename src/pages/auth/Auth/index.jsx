@@ -1,7 +1,12 @@
-import { useEffect, useRef } from "react";
-import Swal from "sweetalert2";
-import { useAuthStore } from "../../../hooks/useAuthStore";
-import { FormAuth, HeaderAuth } from "../components";
+import { useEffect, useRef } from 'react';
+import Swal from 'sweetalert2';
+
+import { useAuthStore } from '../../../hooks/useAuthStore';
+
+import { HeaderAuth } from '../../../components/HeaderAuth';
+import { FormAuth } from '../../../components/FormAuth';
+
+import './styles.css'
 
 export const AuthPage = () => {
   const inputs = useRef([]);
@@ -10,7 +15,7 @@ export const AuthPage = () => {
 
   const onNumberAuthentication = (e) => {
     e.preventDefault();
-    const code = inputs.current.map((input) => input.value).join("");
+    const code = inputs.current.map((input) => input.value).join('');
     startAuthenticationNumber({ code });
   };
 
@@ -22,15 +27,15 @@ export const AuthPage = () => {
   };
 
   const handleKeyDown = (event, index) => {
-    if (event.key === "Backspace" && event.target.value === "" && index > 0) {
+    if (event.key === 'Backspace' && event.target.value === '' && index > 0) {
       inputs.current[index - 1].focus();
-      inputs.current[index - 1].value = "";
+      inputs.current[index - 1].value = '';
     }
   };
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire("authentication failed", errorMessage, "error");
+      Swal.fire('authentication failed', errorMessage, 'error');
     }
   }, [errorMessage]);
 

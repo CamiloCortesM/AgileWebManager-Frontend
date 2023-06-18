@@ -1,7 +1,6 @@
 .add-tarjet {
     margin: 10px;
 }
-
 .add-tarjet__area {
     width: 100%;
     height: 30px;
@@ -10,7 +9,6 @@
     box-shadow: 0 0 5px var(--primary-color);
     border: none;
 }
-
 
 .todo__add-tarjet__create {
     display: flex;

@@ -1,3 +1,5 @@
+import './styles.css';
+
 export const FormAuth = ({
   handleInput,
   inputs,
@@ -75,7 +77,7 @@ export const FormAuth = ({
           required
         />
       </div>
-      <button type="submit" className="auth__footer__botton botton">
+      <button type="submit" className="auth__footer__button button">
         Send
       </button>
     </form>
