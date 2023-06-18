@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import agileWebApi from "../api/agileWebApi";
+
+import agileWebApi from '../api/config';
 import { onAddNewCommmentTodo, onDeleteCommentTodo } from "../store";
 import {
   onAddNewComments,

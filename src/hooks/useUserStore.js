@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
-import agileWebApi from "../api/agileWebApi";
+import agileWebApi from '../api/config';
+
 import {
   addNewUser,
   onDeleteActiveUser,

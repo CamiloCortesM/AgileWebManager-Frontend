@@ -1,7 +1,8 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import agileWebApi from '../api/agileWebApi';
+import agileWebApi from '../api/config';
+
 import { onAddNewTodos, onDeleteTodo, onLoadTodos, onSetActiveTodo, updateTodo } from '../store';
 
 export const useTodoStore = () => {
