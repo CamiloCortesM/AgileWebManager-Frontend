@@ -107,6 +107,18 @@ export const useAuthStore = () => {
     }
   };
 
+  const startSendCode = async () => {
+    try {
+      await agileWebApi.post('/auth/sendcode', { phone: user.phone });
+    } catch (error) {
+      const { data } = error.response;
+      dispatch(onError(data?.msg || 'Error sending code'));
+      setTimeout(() => {
+        dispatch(clearErrorMessage());
+      }, 10);
+    }
+  };
+
   const startLogout = () => {
     localStorage.clear();
     dispatch(onLogout());
@@ -124,6 +136,7 @@ export const useAuthStore = () => {
     startAuthenticationNumber,
     startLogin,
     startLogout,
+    startSendCode,
     startSendNumber,
   };
 };
