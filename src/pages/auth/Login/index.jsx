@@ -6,6 +6,7 @@ import { useForm } from '../../../hooks/useForm';
 import { LoginForm } from '../../../components/LoginForm';
 
 import './styles.css';
+import '../shares-styles/auth-form.css';
 
 const loginformfield = {
   email: '',
