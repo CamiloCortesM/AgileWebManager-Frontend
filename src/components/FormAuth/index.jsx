@@ -77,7 +77,7 @@ export const FormAuth = ({
           required
         />
       </div>
-      <button type="submit" className="auth__footer__button button">
+      <button type="submit" className="auth__form__button">
         Send
       </button>
     </form>
