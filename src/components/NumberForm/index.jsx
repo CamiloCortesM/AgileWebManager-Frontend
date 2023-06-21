@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -12,6 +12,7 @@ export const NumberForm = () => {
   const { startSendNumber, errorMessage } = useAuthStore();
 
   const handleSubmit = async (e) => {
+    console.log(phone);
     e.preventDefault();
     await startSendNumber({ phone });
   };
@@ -28,9 +29,9 @@ export const NumberForm = () => {
         <PhoneNumberInput value={phone} setValue={setPhone} />
       </div>
       <div className="number__footer">
-        <NavLink to="/auth/code">
+        <Link to="/auth/code">
           <button className="number__footer__button back__button">Back</button>
-        </NavLink>
+        </Link>
         <button className="number__footer__button send__button" type="submit">
           Send
         </button>

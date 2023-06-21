@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { useAuthStore } from '../../hooks/useAuthStore';
@@ -43,7 +43,7 @@ export const AuthFooter = () => {
   return (
     <div className="auth__footer">
       <div className="auth__footer__links">
-        <NavLink to="/auth/number">
+        <Link to="/auth/number">
           <button
             className={
               user.status === 'new'
@@ -53,7 +53,7 @@ export const AuthFooter = () => {
           >
             Not My Phone Number
           </button>
-        </NavLink>
+        </Link>
         {resendDisabled ? (
           <div className="auth__footer__counter">{counter}</div>
         ) : (
