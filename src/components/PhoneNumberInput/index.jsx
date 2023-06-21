@@ -4,7 +4,7 @@ import en from 'react-phone-number-input/locale/en';
 import 'react-phone-number-input/style.css';
 import './styles.css';
 
-export const PhoneInput = ({ value, setValue }) => {
+export const PhoneNumberInput = ({ value, setValue }) => {
   return (
     <PhoneInput
       defaultCountry="CO"

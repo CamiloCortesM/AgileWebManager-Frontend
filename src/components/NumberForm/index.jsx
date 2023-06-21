@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
-import { PhoneInput } from '../PhoneInput';
 import { useAuthStore } from '../../hooks/useAuthStore';
 import './styles.css';
+import { PhoneNumberInput } from '../PhoneNumberInput';
 
 export const NumberForm = () => {
   const [phone, setPhone] = useState('');
@@ -25,7 +25,7 @@ export const NumberForm = () => {
   return (
     <form className="number__body__form" onSubmit={handleSubmit}>
       <div className="number__body__phone">
-        <PhoneInput value={phone} setValue={setPhone} />
+        <PhoneNumberInput value={phone} setValue={setPhone} />
       </div>
       <div className="number__footer">
         <NavLink to="/auth/code">
