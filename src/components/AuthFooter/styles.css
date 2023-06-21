@@ -17,11 +17,11 @@
 }
 
 .auth__footer__button {
-  border: none;
   background-color: transparent;
-  font-size: 0.8rem;
+  border: none;
   color: var(--red);
   cursor: pointer;
+  font-size: 0.8rem;
 }
 
 .auth__footer__button:hover {

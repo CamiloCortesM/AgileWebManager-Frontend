@@ -1,33 +1,33 @@
 .settings {
   display: flex;
-  width: 100%;
   height: 100vh;
+  width: 100%;
 }
 
 .settings__sidebar {
-  display: flex;
-  width: 20%;
-  min-width: 280px;
-  height: 100%;
   background-color: var(--white);
+  display: flex;
+  height: 100%;
+  min-width: 280px;
+  width: 20%;
 }
 
 .settings__sidebar__logo {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: 20%;
   padding: 15px 10px;
+  width: 20%;
 }
 
 .settings__sidebar__nav {
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 15px 10px;
   width: 80%;
-  justify-content: space-between;
 }
 
 .settings__sidebar__nav--up {
@@ -37,25 +37,25 @@
 }
 
 .settings__sidebar__nav--down {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
 .settings__sidebar__header {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  display: flex;
   height: 35px;
+  justify-content: center;
+  width: 100%;
 }
 
 .settings__sidebar__header--tittle {
+  color: var(--primary-color);
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-color);
 }
 
 .settings__sidebar--icon {
@@ -65,60 +65,60 @@
 .settings__sidebar__links {
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin-top: 30px;
+  width: 100%;
 }
 
 .settings__sidebar__links--item {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
-  padding-left: 15px;
-  margin-bottom: 10px;
-  height: 40px;
-  width: 100%;
   color: var(--primary-color);
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  width: 100%;
 }
 
 .item__active {
-  color: var(--red);
   background-color: rgba(0, 0, 0, 0.08);
+  color: var(--red);
 }
 
 .settings__sidebar__links--tittle {
+  color: inherit;
   font-size: 1rem;
   text-decoration: none;
-  color: inherit;
 }
 
 .settings__sidebar__nav--exit{
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
 }
 
 .sidebar__logout{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
     border: none;
-    font-weight: 600;
+    cursor: pointer;
+    display: flex;
     font-size: 1rem;
+    font-weight: 600;
+    justify-content: center;
     margin: 10px;
 }
 
 .sidebar__logout img{
-    width: 22px;
     margin-left: 10px;
+    width: 22px;
 }
 .settings__content {
-  width: 80%;
+  background-color: white;
   height: 100%;
   overflow-y: scroll;
   padding: 30px 50px;
-  background-color: white;
+  width: 80%;
 }
 
 .navlink{
