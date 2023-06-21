@@ -62,27 +62,3 @@
   width: 100%;
 }
 
-.react-input {
-  height: 100%;
-  width: 100%;
-  padding: 0 10px;
-}
-
-.react-input input {
-  background-color: transparent;
-  border-left: 10px solid var(--red);
-  border: none;
-  color: var(--primary-color);
-  font-family: poppins;
-  font-size: 1.1rem;
-  height: 100%;
-  margin-left: 10px;
-  outline: none;
-  padding: 10px 10px;
-}
-
-.react-input select option {
-  color: var(--primary-color);
-  font-family: poppins;
-  font-size: 0.9rem;
-}

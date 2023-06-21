@@ -1,22 +1,30 @@
 import { NavLink } from 'react-router-dom';
-import PhoneInput from 'react-phone-number-input';
-import en from 'react-phone-number-input/locale/en';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
-import 'react-phone-number-input/style.css';
+import { useAuthStore } from '../../hooks/useAuthStore';
 import './styles.css';
 
-export const NumberForm = ({ onSubmit, phone, setPhone }) => {
+export const NumberForm = () => {
+  const [phone, setPhone] = useState('');
+
+  const { startSendNumber, errorMessage } = useAuthStore();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await startSendNumber({ phone });
+  };
+
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire('Error in the phone number', errorMessage, 'error');
+    }
+  }, [errorMessage]);
+
   return (
-    <form className="number__body__form" onSubmit={onSubmit}>
+    <form className="number__body__form" onSubmit={handleSubmit}>
       <div className="number__body__phone">
-        <PhoneInput
-          defaultCountry="CO"
-          labels={en}
-          className="react-input"
-          placeholder="Enter phone number"
-          value={phone}
-          onChange={setPhone}
-        />
+        <PhoneInput value={phone} setValue={setPhone} />
       </div>
       <div className="number__footer">
         <NavLink to="/auth/code">
