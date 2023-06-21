@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import agileWebApi from '../api/config';
 
@@ -9,12 +10,15 @@ import {
   onError,
   onLogin,
   onLogout,
+  onUpdate,
   onVerify,
 } from '../store';
 
 export const useAuthStore = () => {
   const { state, user, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const startLogin = async ({ email, password }) => {
     dispatch(onChecking());
@@ -33,7 +37,7 @@ export const useAuthStore = () => {
       );
     } catch (error) {
       const { data } = error.response;
-      dispatch(onLogout(data.msg || data.errors[0].msg));
+      dispatch(onLogout(data.msg || data.errors[0].msg || 'Error logging in'));
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -41,7 +45,6 @@ export const useAuthStore = () => {
   };
 
   const startAuthenticationNumber = async ({ code }) => {
-    dispatch(onChecking());
     try {
       const { data } = await agileWebApi.post('auth/verify', {
         phone: user.phone,
@@ -53,7 +56,9 @@ export const useAuthStore = () => {
       }
     } catch (error) {
       const { data } = error.response;
-      dispatch(onError(data?.msg || 'Invalid verification code'));
+      dispatch(
+        onError(data?.msg || data.errors[0].msg || 'Invalid verification code')
+      );
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -68,7 +73,6 @@ export const useAuthStore = () => {
       const { data } = await agileWebApi.get('auth/renew');
       const { user, token } = data;
       localStorage.setItem('token', token);
-      console.log(data);
       dispatch(
         onLogin({
           name: user.name,
@@ -87,12 +91,14 @@ export const useAuthStore = () => {
   };
 
   const startSendNumber = async ({ phone }) => {
-    dispatch(onChecking());
     try {
       if (!user?.uid) {
         throw new Error('User not authenticated');
       }
       await agileWebApi.post('/auth/number', { phone, uid: user.uid });
+      navigate('/auth/code', {
+        replace: true,
+      });
       dispatch(
         onUpdate({
           phone,
@@ -100,7 +106,7 @@ export const useAuthStore = () => {
       );
     } catch (error) {
       const { data } = error.response;
-      dispatch(onError(data?.msg || 'Invalid number'));
+      dispatch(onError(data?.msg || data.errors[0].msg || 'Invalid number'));
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
@@ -112,7 +118,9 @@ export const useAuthStore = () => {
       await agileWebApi.post('/auth/sendcode', { phone: user.phone });
     } catch (error) {
       const { data } = error.response;
-      dispatch(onError(data?.msg || 'Error sending code'));
+      dispatch(
+        onError(data?.msg || data.errors[0].msg || 'Error sending code')
+      );
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
