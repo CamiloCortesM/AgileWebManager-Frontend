@@ -12,7 +12,6 @@ export const NumberForm = () => {
   const { startSendNumber, errorMessage } = useAuthStore();
 
   const handleSubmit = async (e) => {
-    console.log(phone);
     e.preventDefault();
     await startSendNumber({ phone });
   };
@@ -30,7 +29,9 @@ export const NumberForm = () => {
       </div>
       <div className="number__footer">
         <Link to="/auth/code">
-          <button className="number__footer__button back__button">Back</button>
+          <button className="number__footer__button back__button" type="button">
+            Back
+          </button>
         </Link>
         <button className="number__footer__button send__button" type="submit">
           Send
