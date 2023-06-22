@@ -5,8 +5,9 @@ import { useAuthStore } from '../../../hooks/useAuthStore';
 
 import { HeaderAuth } from '../../../components/HeaderAuth';
 import { FormAuth } from '../../../components/FormAuth';
+import { AuthFooter } from '../../../components/AuthFooter';
 
-import './styles.css'
+import './styles.css';
 
 export const AuthPage = () => {
   const inputs = useRef([]);
@@ -56,6 +57,7 @@ export const AuthPage = () => {
             onNumberAuthentication={onNumberAuthentication}
           />
         </div>
+        <AuthFooter />
       </div>
     </div>
   );

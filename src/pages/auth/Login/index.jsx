@@ -3,10 +3,10 @@ import Swal from 'sweetalert2';
 
 import { useAuthStore } from '../../../hooks/useAuthStore';
 import { useForm } from '../../../hooks/useForm';
+import { LoginForm } from '../../../components/LoginForm';
 
 import './styles.css';
 import '../shares-styles/auth-form.css';
-import '../shares-styles/login-password.css';
 
 const loginformfield = {
   email: '',
@@ -19,7 +19,7 @@ export const LoginPage = () => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    startLogin({ email: email, password: password });
+    startLogin({ email, password });
   };
 
   useEffect(() => {
@@ -37,43 +37,12 @@ export const LoginPage = () => {
         </p>
       </div>
       <div className="login__body">
-        <form className="login__body__form" onSubmit={loginSubmit}>
-          <div className="login__body__email login__input">
-            <input
-              placeholder="Email"
-              type="email"
-              name="email"
-              onChange={onInputChange}
-              value={email}
-              className="login__input__email input"
-            />
-            <img
-              className="login_body__icon--Email login_body__icon"
-              src="/public/icons/user-svgrepo-com.svg"
-              alt="user-icon"
-            />
-          </div>
-          <div className="login__body__password login__input">
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              onChange={onInputChange}
-              value={password}
-              className="login__input__password input"
-            />
-            <img
-              className="login_body__icon--Email login_body__icon"
-              src="/public/icons/lock-off-svgrepo-com.svg"
-              alt="lock-icon"
-            />
-          </div>
-          <div className="login__footer">
-            <button type="submit" className="login__footer__button button">
-              Login
-            </button>
-          </div>
-        </form>
+        <LoginForm
+          email={email}
+          password={password}
+          onChange={onInputChange}
+          onSubmit={loginSubmit}
+        />
       </div>
       <figure className="background__icons">
         <img

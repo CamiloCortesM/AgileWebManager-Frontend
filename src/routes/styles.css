@@ -1,0 +1,50 @@
+.loading {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.spinner {
+  animation: spin 4s ease-in-out infinite;
+  transform: rotate(45deg);
+  border: 8px solid rgba(21, 32, 76, 0.1);
+  border-top-color: var(--red);
+  border-bottom-color: var(--red);
+  outline: 6px solid gray;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(45deg);
+  }
+  15%{
+    transform: rotate(45deg);
+  }
+  20%{
+    transform: rotate(135deg);
+  }
+  35%{
+    transform: rotate(135deg);
+  }
+  40%{
+    transform: rotate(225deg);
+  }
+  55%{
+    transform: rotate(225deg);
+  }
+  60%{
+    transform: rotate(315deg);
+  }
+  75%{
+    transform: rotate(315deg);
+  }
+  80%{
+    transform: rotate(405deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}

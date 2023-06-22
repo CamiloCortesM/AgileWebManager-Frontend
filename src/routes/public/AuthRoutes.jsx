@@ -1,36 +1,36 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { useAuthStore } from "../../hooks/useAuthStore";
+import { useAuthStore } from '../../hooks/useAuthStore';
 
-import { LoginPage } from "../../pages/auth/Login";
-import { SendNumberPage } from "../../pages/auth/SendNumber";
-import { AuthPage } from "../../pages/auth/Auth";
-import { ChangePasswordPage } from "../../pages/auth/ChangePassword";
+import { LoginPage } from '../../pages/auth/Login';
+import { SendNumberPage } from '../../pages/auth/SendNumber';
+import { AuthPage } from '../../pages/auth/Auth';
+import { PageNotFound } from '../../pages/PageNotFound';
 
 export const AuthRoutes = () => {
   const { state, user } = useAuthStore();
-  const { phone } = user;
+  const { status } = user;
   return (
     <Routes>
-      {state === "not-authenticated" ? (
+      {state === 'login-not-athenticated' ? (
         <>
           <Route path="login" element={<LoginPage />} />
           <Route path="/*" element={<Navigate to="/auth/login" />} />
         </>
-      ) : state === "login-not-athenticated" && !phone ? (
+      ) : state === 'not-authenticated' && status === 'new' ? (
         <>
           <Route path="number" element={<SendNumberPage />} />
-          <Route path="/*" element={<Navigate to="/auth/number" />} />
+          <Route path="code" element={<AuthPage />} />
+          <Route path="/*" element={<Navigate to="/auth/code" />} />
         </>
-      ) : state === "login-not-athenticated" && !!phone ? (
+      ) : state === 'not-authenticated' && status === 'verified' ? (
         <>
           <Route path="code" element={<AuthPage />} />
           <Route path="/*" element={<Navigate to="/auth/code" />} />
         </>
       ) : (
         <>
-          <Route path="password" element={<ChangePasswordPage />} />
-          <Route path="/*" element={<Navigate to="/auth/password" />} />
+          <Route path="*" element={<PageNotFound />} />
         </>
       )}
     </Routes>

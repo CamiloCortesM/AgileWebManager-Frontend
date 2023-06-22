@@ -5,7 +5,6 @@ import './styles.css';
 
 export const HeaderAuth = () => {
   const { user } = useAuthStore();
-  const { phone } = user;
   return (
     <div className="auth__header">
       <figure className="auth__image">
@@ -17,7 +16,7 @@ export const HeaderAuth = () => {
       </figure>
       <h2 className="auth__header__title">Two-step authentication</h2>
       <p className="auth__header__description">
-        A code has been sent to the number {getPhone(phone)}
+        A code has been sent to the number {getPhone(user.phone)}
       </p>
     </div>
   );

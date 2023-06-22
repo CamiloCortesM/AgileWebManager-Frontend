@@ -62,7 +62,7 @@ export const Table = ({
   );
 };
 
-Tables.propTypes = {
+Table.propTypes = {
   startDeleteTable: PropTypes.func.isRequired,
   startSetActiveTable: PropTypes.func.isRequired,
   table: PropTypes.object.isRequired,
